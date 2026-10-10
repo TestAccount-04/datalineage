@@ -13,7 +13,7 @@
   --border-color: #e2e8f0;
   --border-strong: #cbd5e1;
   --border-highlight: #2563eb;
-  
+
   /* Primary & Accent Colors */
   --blue-primary: #2563eb;
   --blue-subtle: #eff6ff;
@@ -26,25 +26,25 @@
   --amber-subtle: #fffbeb;
   --rose-danger: #dc2626;
   --rose-subtle: #fef2f2;
-  
+
   /* Text & Content */
   --text-main: #0f172a;
   --text-muted: #334155;
   --text-dim: #64748b;
   --text-light: #94a3b8;
-  
+
   /* Typography */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
+
   /* Transitions & Shadows */
   --transition-smooth: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
-  
+
   --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
   --shadow-card: 0 2px 8px -1px rgba(0, 0, 0, 0.05), 0 1px 3px -1px rgba(0, 0, 0, 0.03);
   --shadow-hover: 0 8px 16px -3px rgba(0, 0, 0, 0.06), 0 3px 6px -2px rgba(0, 0, 0, 0.04);
@@ -52,7 +52,9 @@
 }
 
 /* Reset & Global */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -246,8 +248,15 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hero Section */
@@ -601,8 +610,13 @@ body {
 }
 
 @keyframes svgFlow {
-  from { stroke-dashoffset: 28; }
-  to { stroke-dashoffset: 0; }
+  from {
+    stroke-dashoffset: 28;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .svg-edge-label-bg {
@@ -1043,10 +1057,21 @@ body {
   box-shadow: var(--shadow-hover);
 }
 
-.arch-tier-box.tier-sources { border-left: 4px solid var(--blue-primary); }
-.arch-tier-box.tier-parsing { border-left: 4px solid var(--purple-accent); }
-.arch-tier-box.tier-storage { border-left: 4px solid var(--emerald-success); }
-.arch-tier-box.tier-consumption { border-left: 4px solid var(--amber-warning); }
+.arch-tier-box.tier-sources {
+  border-left: 4px solid var(--blue-primary);
+}
+
+.arch-tier-box.tier-parsing {
+  border-left: 4px solid var(--purple-accent);
+}
+
+.arch-tier-box.tier-storage {
+  border-left: 4px solid var(--emerald-success);
+}
+
+.arch-tier-box.tier-consumption {
+  border-left: 4px solid var(--amber-warning);
+}
 
 .arch-tier-header {
   display: flex;
@@ -1302,26 +1327,1606 @@ body {
   font-weight: 700;
 }
 
-/* Responsive */
+/* ==========================================================================
+ STORY MODE INTERACTIVE NARRATIVE STYLES (README.md Story Mirror)
+ ========================================================================== */
+
+/* Slack War Room Ticker (Prologue) */
+.slack-war-room {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-subtle);
+}
+
+.slack-war-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--rose-danger);
+  font-weight: 700;
+}
+
+.slack-msg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.slack-msg-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  transition: var(--transition-smooth);
+}
+
+.slack-msg-card:hover {
+  border-color: var(--blue-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.slack-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
+}
+
+.slack-role {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.slack-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* Domino Outage Trail */
+.domino-trail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  margin: 1.25rem 0;
+}
+
+.domino-node {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  min-width: 170px;
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-subtle);
+  flex-shrink: 0;
+}
+
+.domino-node.start {
+  border-left: 3px solid #f59e0b;
+}
+
+.domino-node.step {
+  border-left: 3px solid #64748b;
+}
+
+.domino-node.crash {
+  border-left: 3px solid var(--rose-danger);
+  background: #fff5f5;
+}
+
+.domino-arrow {
+  color: var(--text-dim);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* 20 Suspects Badge Cloud (Act I) */
+.suspects-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.suspect-pill {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: var(--transition-smooth);
+}
+
+.suspect-pill:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+  background: var(--blue-subtle);
+  transform: translateY(-1px);
+}
+
+/* 3 Defeated Detectives (Act I) */
+.detectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.detective-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+}
+
+.detective-card:hover {
+  border-color: var(--rose-danger);
+  box-shadow: var(--shadow-card);
+}
+
+.detective-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.detective-flaw {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.detective-quote {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  background: #f8fafc;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--border-strong);
+}
+
+/* Riddle Interactive Boxes (Act III) */
+.riddle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.riddle-box {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.riddle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.riddle-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Ghost Dependency Comparison (Riddle 3) */
+.ghost-dep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.ghost-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.ghost-card.control {
+  border-top: 3px solid #f59e0b;
+}
+
+.ghost-card.data {
+  border-top: 3px solid var(--emerald-success);
+}
+
+.ghost-card.highlight {
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+  border-color: var(--blue-primary);
+}
+
+/* Riddle 2 Zoom Hierarchy Buttons & Preview */
+.zoom-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.btn-zoom-level {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-zoom-level:hover {
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
+  background: var(--blue-subtle);
+}
+
+.btn-zoom-level.active {
+  background: var(--blue-primary);
+  border-color: var(--blue-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.zoom-preview-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.zoom-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+  margin-bottom: 0.5rem;
+}
+
+/* 90-Day Roadmap Grid (Act VI) */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.roadmap-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+}
+
+.roadmap-card:hover {
+  border-color: var(--blue-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.roadmap-phase-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--blue-primary);
+  text-transform: uppercase;
+}
+
+.roadmap-days {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin: 0.2rem 0 0.5rem;
+}
+
+.roadmap-bullet {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   ACT II: FORENSIC CONVERGENCE & LIVE EXTRACTION SIMULATION STYLES
+   ========================================================================== */
+
+.evidence-model-container {
+  margin-bottom: 2rem;
+}
+
+.evidence-model-banner-wrap {
+  margin-top: 1.25rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  background: #ffffff;
+}
+
+.evidence-model-banner-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.clues-investigation-wrapper {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+.simulation-actions-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-simulation-trigger {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #38bdf8;
+  border: 1px solid #334155;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-simulation-trigger:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* Simulation Workbench Console */
+.simulation-workbench {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+  color: #f8fafc;
+}
+
+.sim-workbench-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.sim-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.sim-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: simPulse 2s infinite ease-in-out;
+}
+
+@keyframes simPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.sim-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+}
+
+.sim-telemetry-hud {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sim-stat-pill {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 105px;
+}
+
+.sim-stat-pill.highlight {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.sim-stat-label {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.sim-stat-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #38bdf8;
+  margin-top: 0.15rem;
+}
+
+.sim-stat-pill.highlight .sim-stat-value {
+  color: #10b981;
+}
+
+/* 3 Planes Columns Grid */
+.sim-planes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sim-plane-col {
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid #334155;
+  border-radius: var(--radius-sm);
+  padding: 1.15rem;
+  transition: var(--transition-smooth);
+}
+
+.sim-plane-col.active-plane {
+  border-color: #38bdf8;
+  background: rgba(30, 41, 59, 0.95);
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.12);
+}
+
+.sim-plane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sim-plane-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.sim-plane-tag.static { color: #818cf8; }
+.sim-plane-tag.metadata { color: #38bdf8; }
+.sim-plane-tag.runtime { color: #34d399; }
+
+.sim-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: #334155;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.sim-plane-col.active-plane .sim-status-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.sim-extracted-box {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sim-placeholder-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-style: italic;
+  margin: auto;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.sim-entity-item {
+  display: none;
+  align-items: center;
+  gap: 0.65rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  animation: simItemPop 0.35s ease-out forwards;
+}
+
+.sim-entity-item.discovered {
+  display: flex;
+}
+
+@keyframes simItemPop {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.sim-entity-meta strong {
+  display: block;
+  font-size: 0.82rem;
+  color: #f1f5f9;
+}
+
+.sim-entity-meta small {
+  display: block;
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.sim-edge-item {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px dashed #475569;
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #38bdf8;
+  animation: simItemPop 0.4s ease-out forwards;
+}
+
+.sim-edge-item.discovered {
+  display: flex;
+}
+
+.sim-edge-line {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: #38bdf8;
+  flex-shrink: 0;
+}
+
+.sim-edge-line.bridge {
+  background: #f59e0b;
+}
+
+/* Convergence Preview Pipeline */
+.sim-convergence-preview {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: var(--radius-sm);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.sim-conv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.sim-conv-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #334155;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.sim-conv-pill.synced {
+  background: #065f46;
+  color: #34d399;
+}
+
+.sim-pipeline-track {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+}
+
+.sim-track-node {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  opacity: 0.35;
+  transition: var(--transition-smooth);
+}
+
+.sim-track-node.active-node {
+  opacity: 1;
+  border-color: #38bdf8;
+  background: #0369a1;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+.sim-track-badge {
+  display: block;
+  font-size: 0.65rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.sim-track-node.active-node .sim-track-badge {
+  color: #e0f2fe;
+}
+
+.sim-track-arrow {
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.sim-track-arrow.active-arrow {
+  color: #38bdf8;
+}
+
+/* Simulation Terminal Log */
+.sim-terminal-log {
+  background: #030712;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+.sim-terminal-head {
+  background: #111827;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.68rem;
+  color: #9ca3af;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  border-bottom: 1px solid #1f2937;
+}
+
+.sim-terminal-body {
+  padding: 0.75rem 0.85rem;
+  max-height: 90px;
+  overflow-y: auto;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sim-log-line {
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+.sim-log-line.info { color: #38bdf8; }
+.sim-log-line.success { color: #34d399; }
+.sim-log-line.alert { color: #f87171; }
+
+/* ==========================================================================
+   DALA: INTERACTIVE IN-APP TRAVELING CHARACTER GUIDE
+   ========================================================================== */
+
+/* Target Element Focus Aura (Clean & Non-Intrusive Driver.js-Style Spotlight) */
+.dala-spotlight-active {
+  position: relative !important;
+  outline: 2.5px solid #38bdf8 !important;
+  outline-offset: 5px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.16), 0 10px 30px rgba(56, 189, 248, 0.22) !important;
+  transition: outline 0.3s ease, box-shadow 0.3s ease !important;
+  animation: dalaSpotlightPulse 2.5s infinite alternate ease-in-out !important;
+}
+
+@keyframes dalaSpotlightPulse {
+  0% { box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12), 0 8px 24px rgba(56, 189, 248, 0.18) !important; }
+  100% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.24), 0 12px 36px rgba(56, 189, 248, 0.35) !important; }
+}
+
+/* Master Traveling Host Container */
+.dala-character-host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  pointer-events: none;
+  transition: transform 0.65s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease;
+  will-change: transform;
+}
+
+.dala-character-host.is-dragging {
+  transition: none !important;
+}
+
+.dala-character-host.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Directional Docking Orientations (Flanking Left and Right) */
+.dala-character-host.dock-right {
+  flex-direction: row;
+}
+
+.dala-character-host.dock-left {
+  flex-direction: row-reverse;
+}
+
+.dala-character-host.dock-bottom {
+  flex-direction: row;
+}
+
+.dala-character-host.dock-top {
+  flex-direction: row;
+}
+
+/* Character Unit */
+.dala-character-unit {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: dalaFloatBob 3.6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+.dala-character-unit:active,
+.dala-character-host.is-dragging .dala-character-unit {
+  cursor: grabbing;
+}
+
+@keyframes dalaFloatBob {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(1.2deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
+.dala-character-unit:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Ambient Radial Glow Aura */
+.dala-aura {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(37, 99, 235, 0.1) 60%, transparent 80%);
+  filter: blur(10px);
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.dala-ground-shadow {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 12px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.45) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dalaShadowBob 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes dalaShadowBob {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(0.85); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Detached Magnetic Hands */
+.dala-hand {
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dala-hand-left {
+  left: -8px;
+  top: 50px;
+  animation: dalaHandWaveLeft 3.2s ease-in-out infinite alternate;
+}
+
+.dala-hand-right {
+  right: -8px;
+  top: 50px;
+  animation: dalaHandWaveRight 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes dalaHandWaveLeft {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-5px) rotate(-12deg); }
+}
+
+@keyframes dalaHandWaveRight {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-5px) rotate(12deg); }
+}
+
+/* Expression State Tweaks */
+.eye-happy,
+.eye-star,
+.dala-alert-mark {
+  display: none;
+}
+
+/* 1. Welcome expression */
+.dala-welcome .eye-happy {
+  display: block;
+}
+.dala-welcome .eye-pupil,
+.dala-welcome .eye-shine {
+  display: none;
+}
+.dala-welcome .dala-hand-left {
+  animation: dalaWaveGreeting 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes dalaWaveGreeting {
+  0% { transform: translateY(-10px) rotate(-28deg); }
+  100% { transform: translateY(-18px) rotate(-5deg); }
+}
+
+/* 2. Explaining expression */
+.dala-explaining .dala-hand-right {
+  transform: translateX(12px) translateY(-6px) rotate(25deg);
+}
+.dala-explaining.dock-left .dala-hand-left {
+  transform: translateX(-12px) translateY(-6px) rotate(-25deg);
+}
+
+/* 3. Thinking expression */
+.dala-thinking .dala-aura {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(126, 34, 206, 0.12) 60%, transparent 80%);
+}
+.dala-thinking .dala-eyes-container {
+  animation: dalaEyesScan 2.4s ease-in-out infinite;
+}
+
+@keyframes dalaEyesScan {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px) translateX(2px); }
+}
+
+/* 4. Warning expression */
+.dala-warning .dala-alert-mark {
+  display: block;
+}
+.dala-warning .eye-pupil,
+.dala-warning .eye-shine,
+.dala-warning .eye-happy,
+.dala-warning .eye-star {
+  display: none;
+}
+.dala-warning .dala-aura {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(245, 158, 11, 0.15) 60%, transparent 80%);
+}
+
+/* 5. Celebrating expression */
+.dala-celebrating .eye-star {
+  display: block;
+}
+.dala-celebrating .eye-pupil,
+.dala-celebrating .eye-shine {
+  display: none;
+}
+.dala-celebrating .dala-character-unit {
+  animation: dalaCelebrateJump 1.2s ease-in-out infinite alternate;
+}
+.dala-celebrating .dala-hand-left {
+  transform: translateY(-14px) rotate(-25deg);
+}
+.dala-celebrating .dala-hand-right {
+  transform: translateY(-14px) rotate(25deg);
+}
+
+@keyframes dalaCelebrateJump {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.06) rotate(3deg); }
+  100% { transform: translateY(0px) scale(1) rotate(-3deg); }
+}
+
+/* Speech Bubble Card */
+.dala-speech-bubble {
+  position: relative;
+  width: 330px;
+  max-width: calc(100vw - 36px);
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 18px;
+  padding: 1.15rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.42), 0 0 20px rgba(56, 189, 248, 0.15);
+  color: #f8fafc;
+  pointer-events: auto;
+  cursor: grab;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dala-character-host.is-dragging .dala-speech-bubble {
+  cursor: grabbing;
+}
+
+.dala-speech-bubble button,
+.dala-speech-bubble a {
+  cursor: pointer;
+}
+
+/* Directional Bubble Pointer Tails */
+.dala-bubble-tail {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #0f172a;
+  border-color: rgba(56, 189, 248, 0.35);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+}
+
+.dock-right .dala-bubble-tail {
+  left: -8px;
+  top: 42px;
+  border-left-width: 1.5px;
+  border-bottom-width: 1.5px;
+  transform: rotate(45deg);
+}
+
+.dock-left .dala-bubble-tail {
+  right: -8px;
+  top: 42px;
+  border-right-width: 1.5px;
+  border-top-width: 1.5px;
+  transform: rotate(45deg);
+}
+
+.dock-bottom .dala-bubble-tail {
+  top: -8px;
+  left: 45px;
+  border-top-width: 1.5px;
+  border-left-width: 1.5px;
+  transform: rotate(45deg);
+}
+
+.dock-top .dala-bubble-tail {
+  bottom: -8px;
+  left: 45px;
+  border-bottom-width: 1.5px;
+  border-right-width: 1.5px;
+  transform: rotate(45deg);
+}
+
+/* Bubble Header */
+.dala-bubble-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: grab;
+  user-select: none;
+}
+
+.dala-bubble-header:active,
+.dala-character-host.is-dragging .dala-bubble-header {
+  cursor: grabbing;
+}
+
+.dala-bubble-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dala-brand-tag {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.dala-sparkle {
+  color: #f59e0b;
+}
+
+.dala-mood-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.dala-bubble-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dala-drag-badge {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  transition: var(--transition-smooth);
+}
+
+.dala-drag-badge:hover {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+.dala-step-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: #1e293b;
+  color: #cbd5e1;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.dala-btn-icon {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.dala-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Bubble Content */
+.dala-bubble-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.dala-bubble-message {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+/* Action HUD / Waiting Badge */
+.dala-action-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.dala-hud-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: simPulse 1.8s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+.dala-action-text {
+  font-size: 0.76rem;
+  color: #a5f3fc;
+  font-weight: 600;
+}
+
+/* Bubble Footer Controls */
+.dala-bubble-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dala-nav-btns {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dala-btn-secondary {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dala-btn-secondary:hover {
+  background: #334155;
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.dala-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.dala-btn-primary:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+}
+
+/* Minimized Speech Bubble */
+.dala-character-host.minimized .dala-speech-bubble {
+  opacity: 0;
+  transform: scale(0.7) translateY(-10px);
+  pointer-events: none;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Reopen Floating Pill Button */
+.dala-reopen-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border: 1.5px solid #38bdf8;
+  color: #f8fafc;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(56, 189, 248, 0.25);
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  animation: reopenBounce 3s infinite ease-in-out;
+}
+
+.dala-reopen-pill:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #60a5fa;
+}
+
+@keyframes reopenBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ==========================================================================
+   DALA: FINISH CELEBRATION MODAL
+   ========================================================================== */
+
+.dala-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.dala-finish-card {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: #0f172a;
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 24px;
+  padding: 2.25rem;
+  color: #f8fafc;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 45px rgba(56, 189, 248, 0.22);
+  animation: dalaModalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dalaModalPop {
+  0% { transform: scale(0.85) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.dala-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #94a3b8;
+  font-size: 1.4rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.dala-modal-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.dala-finish-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(234, 88, 12, 0.15));
+  border: 1px solid #f59e0b;
+  color: #fbbf24;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
+}
+
+.dala-finish-character-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.dala-finish-avatar-wrap {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(15, 23, 42, 0.8) 70%);
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+
+.dala-finish-avatar-icon {
+  font-size: 2.75rem;
+}
+
+.dala-celebration-sparkle {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 1.4rem;
+  animation: dalaSparkleSpin 2s infinite ease-in-out;
+}
+
+@keyframes dalaSparkleSpin {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(25deg) scale(1.2); }
+}
+
+.dala-finish-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.dala-finish-subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.45;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.dala-finish-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.4rem;
+}
+
+.dala-stat-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.85rem 0.6rem;
+  text-align: center;
+}
+
+.dala-stat-num {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #38bdf8;
+  margin-bottom: 0.2rem;
+}
+
+.dala-stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.dala-stat-sub {
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+.dala-finish-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.dala-finish-callout-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.dala-finish-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dala-finish-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.dala-finish-btn-primary:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.55);
+}
+
+.dala-finish-btn-secondary {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dala-finish-btn-secondary:hover {
+  background: rgba(51, 65, 85, 0.9);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dala-finish-btn-ghost {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.dala-finish-btn-ghost:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================================================== */
+
 @media (max-width: 900px) {
   .detailed-layout {
     grid-template-columns: 1fr;
   }
+
   .doc-sidebar {
     display: none;
   }
+
   .top-nav {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
   }
+
   .dossier-grid {
     grid-template-columns: 1fr;
   }
+
   .hero-title {
     font-size: 2rem;
   }
+
   .canvas-stages-header {
     display: none;
+  }
+
+  .sim-planes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dala-speech-bubble {
+    width: 290px;
+  }
+
+  .dala-character-host {
+    flex-direction: column !important;
+  }
+
+  .dala-character-unit {
+    width: 80px;
+    height: 80px;
   }
 }

@@ -67,8 +67,8 @@
     <div id="view-story" class="view-panel active">
       
       <!-- Hero Banner -->
-      <section class="hero-card">
-        <div class="hero-tag">Interactive Case File • Enterprise Architecture</div>
+      <section class="hero-card" data-dala="welcome-hero">
+        <div class="hero-tag">Case #2026-DL-0900 • Enterprise Data Lineage & Dependency Tracking</div>
         <h1 class="hero-title">Solving the Enterprise Data Mystery</h1>
         <p class="hero-subtitle">
           Follow the forensic trail across 20 enterprise technologies. Gather clues from source code, database catalogs, and runtime events to solve why a single line of Java broke an executive dashboard—and build the engine that prevents it forever.
@@ -76,17 +76,17 @@
         <img src="assets/platform_vision_banner.png" alt="Platform Vision Banner" style="width:100%; border-radius:12px; border:1px solid #e2e8f0; margin-top:1rem; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
       </section>
 
-      <!-- Act 1: The Crime Scene -->
+      <!-- Prologue: The Crime Scene -->
       <article class="act-card">
         <div class="act-header">
           <div>
-            <div class="act-label">Act I • The Incident</div>
+            <div class="act-label">Prologue • 09:00 AM Incident</div>
             <h2 class="act-title">The Monday Morning Crime Scene</h2>
           </div>
           <span style="background:#fee2e2; color:#dc2626; border:1px solid #fecaca; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.8rem; font-weight:700;">OUTAGE AT 09:00 AM</span>
         </div>
         <p class="doc-text">
-          It's Monday morning. The CFO opens the executive dashboard to prepare for the board meeting, but the primary revenue KPI card displays a catastrophic error:
+          It is <strong>09:00 AM on Monday</strong>. The CFO opens the executive dashboard to prepare for the board meeting, and the main revenue KPI widget displays a catastrophic error:
         </p>
         
         <div class="terminal-alert">
@@ -99,237 +99,718 @@
             at com.corp.risk.RiskService.calculateScore(RiskService.java:114)<br>
             at com.corp.pipeline.RiskEnricherJob.execute(batch_risk_enricher.py:42)<br>
             at snowflake.dbt.daily_risk_summary.run(dbt_model.sql:18)<br>
-            <strong>FATAL: Downstream Power BI Dashboard 'Executive Risk KPI' failed to refresh.</strong>
+            <strong>FATAL: Downstream Power BI Dashboard 'Executive Revenue KPI' failed to refresh.</strong>
           </div>
         </div>
 
-        <p class="doc-text">
-          <strong>The Paradox:</strong> A software engineer renamed a variable in a single Java method on Friday afternoon. How could a 1-line code tweak in a repo crash an executive dashboard 4 systems away? <strong>Because nobody has the complete map.</strong>
-        </p>
-      </article>
-
-      <!-- Interactive Node & Edge Lineage Graph Explorer -->
-      <section class="graph-canvas-card">
-        <div class="graph-canvas-header">
-          <div>
-            <div class="act-label">Interactive Lineage Fabric</div>
-            <h2 style="font-family:var(--font-heading); font-size:1.6rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">
-              Live Node & Edge Lineage Graph
-            </h2>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
-              Trace data flow from raw OLTP sources through code, pipelines, and warehouses to final executive KPI dashboards. Click any node to inspect upstream origin, downstream impact, and verified forensic proofs.
-            </p>
+        <!-- Interactive Slack War Room -->
+        <div class="slack-war-room" data-dala="incident">
+          <div class="slack-war-header">
+            <span>🚨 #incident-war-room-kpi • 4 TEAMS FINGER-POINTING</span>
+            <span>LIVE CHAT 09:04 AM</span>
           </div>
-
-          <div class="graph-controls">
-            <button id="btn-trace-flow" class="btn-graph-action active" title="Trace data packets flowing across the graph">
-              <span>▶</span> Trace Data Flow Animation
-            </button>
-            <button id="btn-show-cll" class="btn-graph-action" title="Highlight column-level transformation flow">
-              <span>⚡</span> Inspect Column Lineage
-            </button>
-            <button id="btn-simulate-break" class="btn-graph-action" title="Simulate Friday's breaking column drop outage">
-              <span>💥</span> Simulate Friday Outage
-            </button>
-            <button id="btn-reset-graph" class="btn-graph-action" title="Reset filters and animations">
-              <span>↺</span> Reset
-            </button>
-            <div style="display:flex; gap:0.25rem; background:#ffffff; border:1px solid var(--border-color); padding:0.2rem; border-radius:8px;">
-              <button class="btn-graph-action btn-filter-tier active" data-tier="all">All</button>
-              <button class="btn-graph-action btn-filter-tier" data-tier="table">Tables</button>
-              <button class="btn-graph-action btn-filter-tier" data-tier="code">Code</button>
-              <button class="btn-graph-action btn-filter-tier" data-tier="job">Jobs</button>
-              <button class="btn-graph-action btn-filter-tier" data-tier="bi">BI</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5-Stage Architectural Flow Indicators -->
-        <div class="canvas-stages-header">
-          <div class="stage-step"><span>🗄️</span> 1. Source Tables</div>
-          <div class="stage-step"><span>💻</span> 2. Service Code</div>
-          <div class="stage-step"><span>🔄</span> 3. ETL Pipeline</div>
-          <div class="stage-step"><span>❄️</span> 4. Data Warehouse</div>
-          <div class="stage-step"><span>📊</span> 5. Final Lineage (KPI)</div>
-        </div>
-
-        <!-- Interactive Deterministic SVG Canvas Viewport -->
-        <div id="graph-viewport" class="graph-viewport">
-          <svg id="lineage-svg-canvas" viewBox="0 0 1260 410"></svg>
-        </div>
-
-        <!-- Node Inspector Drawer -->
-        <div id="node-inspector" class="node-inspector-drawer">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
-            <div>
-              <h3 id="insp-name" style="font-family:var(--font-heading); font-size:1.3rem; font-weight:800; color:var(--text-main);">Selected Node</h3>
-              <div id="insp-type" style="font-size:0.85rem; color:var(--blue-primary); font-weight:600; margin-top:0.2rem;">Technology</div>
-            </div>
-            <span id="insp-confidence" class="badge-confirmed">98% Verified</span>
-          </div>
-
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; font-size:0.85rem;">
-            <div>
-              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Owner / Squad</div>
-              <div id="insp-owner" style="color:var(--text-muted);">Platform Team</div>
-              
-              <div style="font-weight:700; color:var(--text-main); margin-top:0.75rem; margin-bottom:0.25rem;">Physical Location</div>
-              <code id="insp-location" style="font-family:var(--font-mono); font-size:0.8rem; background:#ffffff; padding:0.2rem 0.5rem; border-radius:4px; border:1px solid #e2e8f0; color:#2563eb;">repo/path</code>
+          <div class="slack-msg-grid">
+            <div class="slack-msg-card" data-squad="bi">
+              <div class="slack-user">
+                <span>📊</span>
+                <div>
+                  BI Analytics Squad
+                  <div class="slack-role">Lead Analyst</div>
+                </div>
+              </div>
+              <div class="slack-text">
+                "Our dashboard is untouched; the Snowflake warehouse table <code>daily_risk_summary</code> stopped receiving updates!"
+              </div>
             </div>
 
-            <div>
-              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">◄ Direct Upstream Origin</div>
-              <div id="insp-upstream" style="color:#0284c7; font-weight:600; margin-bottom:0.75rem;">None</div>
-
-              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">► Direct Downstream Consumer</div>
-              <div id="insp-downstream" style="color:#7c3aed; font-weight:600;">None</div>
+            <div class="slack-msg-card" data-squad="de">
+              <div class="slack-user">
+                <span>🔄</span>
+                <div>
+                  Data Engineering
+                  <div class="slack-role">Pipeline Lead</div>
+                </div>
+              </div>
+              <div class="slack-text">
+                "Our dbt pipeline failed because upstream table <code>risk_enriched_orders</code> had null values!"
+              </div>
             </div>
 
-            <div>
-              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Key Columns / Attributes</div>
-              <ul id="insp-columns" style="color:var(--text-muted); padding-left:1.2rem; line-height:1.6;"></ul>
+            <div class="slack-msg-card" data-squad="platform">
+              <div class="slack-user">
+                <span>⚙️</span>
+                <div>
+                  Platform Squad
+                  <div class="slack-role">SRE On-Call</div>
+                </div>
+              </div>
+              <div class="slack-text">
+                "The Python job failed because the backend Java service changed on Friday afternoon!"
+              </div>
             </div>
 
-            <div style="grid-column:1 / -1;">
-              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Supporting Forensic Proof (Evidence Plane)</div>
-              <div id="insp-evidence" style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid var(--emerald-success); padding:0.6rem 0.85rem; border-radius:4px; font-family:var(--font-mono); font-size:0.8rem; color:#047857;">
-                Verified proof description
+            <div class="slack-msg-card" data-squad="backend">
+              <div class="slack-user">
+                <span>💻</span>
+                <div>
+                  Backend Engineer
+                  <div class="slack-role">Java Developer</div>
+                </div>
+              </div>
+              <div class="slack-text">
+                "I only renamed a variable in one method in a Java repository! How could that break an executive board dashboard four systems away?!"
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Act 2: Collecting the Clues -->
+        <!-- Domino Failure Trail -->
+        <div style="margin-top:1.25rem;">
+          <div style="font-weight:700; color:var(--text-main); font-size:0.9rem; margin-bottom:0.5rem;">The Invisible Domino Failure Trail:</div>
+          <div class="domino-trail">
+            <div class="domino-node start">
+              <strong>Friday 4:00 PM</strong><br>
+              Java Dev renames field
+            </div>
+            <div class="domino-arrow">➔</div>
+            <div class="domino-node step">
+              <strong>Postgres Table</strong><br>
+              <code>customers</code> schema drifts
+            </div>
+            <div class="domino-arrow">➔</div>
+            <div class="domino-node step">
+              <strong>Python Job</strong><br>
+              KeyError in PySpark
+            </div>
+            <div class="domino-arrow">➔</div>
+            <div class="domino-node step">
+              <strong>Snowflake dbt</strong><br>
+              Model compilation fails
+            </div>
+            <div class="domino-arrow">➔</div>
+            <div class="domino-node crash">
+              <strong>Monday 9:00 AM 💥</strong><br>
+              CFO Dashboard Goes Dark
+            </div>
+          </div>
+        </div>
+
+        <p class="doc-text" style="margin-top:1rem;">
+          <strong>The Real Problem:</strong> <strong>Nobody had the full map.</strong> In modern enterprises, code lives in GitHub, jobs live in Airflow, schemas live in databases, transformations live in dbt, and dashboards live in Power BI.<br>
+          <strong>The Mission:</strong> Build <strong>Google Maps for Enterprise Data</strong>—an intelligent platform that traces any data asset from source code to dashboard, explains <em>why</em> each connection exists, and predicts <strong>what will break before changes are merged.</strong>
+        </p>
+      </article>
+
+      <!-- Act I: The 20 Suspects in the Enterprise Fog -->
       <article class="act-card">
         <div class="act-header">
           <div>
-            <div class="act-label">Act II • Evidence Gathering</div>
-            <h2 class="act-title">Gather the Three Forensic Clues</h2>
+            <div class="act-label">Act I • The Suspects</div>
+            <h2 class="act-title">The 20 Suspects in the Enterprise Fog</h2>
           </div>
-          <span style="color:var(--blue-primary); font-size:0.85rem; font-weight:600;">Click each card to collect and verify</span>
+          <span style="color:var(--text-muted); font-size:0.85rem; font-weight:600;">Interrogating the Tech Estate</span>
         </div>
         <p class="doc-text">
-          Traditional tools fail because Git only sees code, catalogs only see table names, and AI models hallucinate. To build an undeniable proof fabric, we collect evidence across <strong>3 independent planes</strong>:
+          To solve this mystery, we first interrogated the 20 disconnected technologies running across the enterprise estate:
         </p>
 
-        <div class="clue-grid">
-          <!-- Clue 1: Static -->
-          <div class="clue-card" id="card-clue-static">
-            <div>
-              <span class="clue-badge">Clue #1 • Static Plane</span>
-              <h3 class="clue-title">Code Breadcrumbs</h3>
-              <p class="clue-desc">Parsed from Git repos without running code. Tree-sitter & SQLGlot reveal what code <i>could</i> do.</p>
-              <div class="clue-snippet">
-                // RiskService.java:112<br>
-                SELECT id, credit_score FROM customers<br>
-                AST: Tree-sitter + SQLGlot Parser
-              </div>
+        <!-- 20 Suspects Badge Cloud -->
+        <div class="suspects-cloud">
+          <span class="suspect-pill">☕ Java Microservices</span>
+          <span class="suspect-pill">🐍 Python Analytics Scripts</span>
+          <span class="suspect-pill">🐘 PostgreSQL Databases</span>
+          <span class="suspect-pill">🏛️ Oracle Stored Procedures</span>
+          <span class="suspect-pill">❄️ Snowflake Data Warehouse</span>
+          <span class="suspect-pill">⚡ Apache Kafka Topics</span>
+          <span class="suspect-pill">🪣 AWS S3 Data Lakes</span>
+          <span class="suspect-pill">🌪️ Apache Airflow DAGs</span>
+          <span class="suspect-pill">🧱 dbt Core Transformation Models</span>
+          <span class="suspect-pill">📊 Power BI Dashboards</span>
+          <span class="suspect-pill">🔥 Apache Spark Streaming</span>
+          <span class="suspect-pill">⚡ Redis Caches</span>
+          <span class="suspect-pill">🔍 Google BigQuery</span>
+          <span class="suspect-pill">🚚 Fivetran Connectors</span>
+          <span class="suspect-pill">📈 Looker Models</span>
+          <span class="suspect-pill">📉 Tableau Workbooks</span>
+          <span class="suspect-pill">☸️ Kubernetes CronJobs</span>
+          <span class="suspect-pill">📑 AWS Glue Data Catalog</span>
+          <span class="suspect-pill">🧱 Databricks Unity Catalog</span>
+          <span class="suspect-pill">🌍 Terraform Infrastructure</span>
+        </div>
+
+        <p class="doc-text">
+          Why couldn't our existing tools solve this outage? We questioned the three typical forensic approaches:
+        </p>
+
+        <!-- 3 Defeated Detectives Grid -->
+        <div class="detectives-grid" data-dala="detectives">
+          <div class="detective-card">
+            <div class="detective-name">
+              <span>🕵️‍♂️</span> Detective Git
             </div>
-            <button class="btn-collect" data-clue="static" id="btn-clue-static">Inspect & Collect Clue #1</button>
+            <div class="detective-flaw">BLIND TO PRODUCTION RUNTIME</div>
+            <div class="detective-quote">
+              "I parse source code and ASTs in GitHub repos, but I have no idea what actually runs in production, dynamic SQL constructed at runtime, or database triggers."
+            </div>
           </div>
 
-          <!-- Clue 2: Metadata -->
-          <div class="clue-card" id="card-clue-metadata">
-            <div>
-              <span class="clue-badge">Clue #2 • Metadata Plane</span>
-              <h3 class="clue-title">Catalog Fingerprints</h3>
-              <p class="clue-desc">Extracted from database schemas & dbt manifests. Proves table definitions and column ownership.</p>
-              <div class="clue-snippet">
-                // dbt manifest.json<br>
-                model: daily_risk_summary<br>
-                depends_on: [risk_enriched_orders]
-              </div>
+          <div class="detective-card">
+            <div class="detective-name">
+              <span>📚</span> Detective Catalog
             </div>
-            <button class="btn-collect" data-clue="metadata" id="btn-clue-metadata">Query & Collect Clue #2</button>
+            <div class="detective-flaw">STOPS AT THE DATABASE DOOR</div>
+            <div class="detective-quote">
+              "I know table and column names from database information schemas, but I stop at the database door. I cannot see math inside a Java method or SQL CTE logic."
+            </div>
           </div>
 
-          <!-- Clue 3: Runtime -->
-          <div class="clue-card" id="card-clue-runtime">
-            <div>
-              <span class="clue-badge">Clue #3 • Runtime Plane</span>
-              <h3 class="clue-title">Runtime Eyewitness</h3>
-              <p class="clue-desc">Observed from live executions. OpenLineage events & query logs prove what <i>actually ran</i>.</p>
-              <div class="clue-snippet">
-                // OpenLineage RunFacet #8912<br>
-                input: dataset://postgres/customers<br>
-                timestamp: 2026-10-10 08:00 UTC
-              </div>
+          <div class="detective-card">
+            <div class="detective-name">
+              <span>🤖</span> Detective LLM
             </div>
-            <button class="btn-collect" data-clue="runtime" id="btn-clue-runtime">Analyze & Collect Clue #3</button>
+            <div class="detective-flaw">HALLUCINATES CONNECTIONS</div>
+            <div class="detective-quote">
+              "When asked to map dependencies across a 500,000-line codebase, I invent plausible-looking connections that don't actually exist in the production cluster."
+            </div>
           </div>
         </div>
 
-        <!-- Evidence Model Infographic -->
-        <div style="margin-top:2rem;">
-          <h4 style="font-family:var(--font-heading); color:var(--text-main); margin-bottom:0.75rem;">Forensic Convergence: The 3-Plane Evidence Card</h4>
-          <img src="assets/modern_evidence_model.png" alt="Evidence Model" style="width:100%; border-radius:12px; border:1px solid #e2e8f0; box-shadow:var(--shadow-card);">
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:1.25rem; margin-top:1rem;">
+          <strong style="color:#15803d; font-family:var(--font-heading);">💡 The Epiphany:</strong>
+          <span style="color:#166534; font-size:0.9rem;">
+            A single tool or AI model cannot solve this puzzle. We must construct a <strong>Unified Lineage Fabric</strong> that gathers forensic clues from three independent planes and binds them with auditable physical evidence.
+          </span>
         </div>
       </article>
 
-      <!-- Act 3: Solving Identity Doppelgangers -->
-      <article class="act-card" id="deduction-unlock-card" style="display:none;">
+      <!-- Act 2: Collecting the Clues & Forensic Convergence -->
+      <article class="act-card" id="act-2-evidence-section">
+        
+        <!-- 1. The 3-Plane Model Infographic (Placed ABOVE) -->
+        <div class="evidence-model-container" data-dala="3plane-model">
+          <div class="act-header">
+            <div>
+              <div class="act-label">Forensic Architecture • The 3 Planes</div>
+              <h2 class="act-title">Forensic Convergence: The 3-Plane Evidence Model</h2>
+            </div>
+            <span class="badge-confirmed">CONFIRMED EVIDENCE FABRIC</span>
+          </div>
+          <p class="doc-text">
+            Traditional tools fail because Git only sees code, catalogs only see table names, and AI models hallucinate. To eliminate blind spots, LineageForge intercepts proof across <strong>3 independent evidence planes</strong>:
+          </p>
+          <div class="evidence-model-banner-wrap">
+            <img src="assets/modern_evidence_model.png" alt="Data Lineage Evidence Model - Static, Metadata, Runtime Convergence" class="evidence-model-banner-img">
+          </div>
+        </div>
+
+        <!-- 2. Gather the Three Forensic Clues & Live Simulation (Placed BELOW) -->
+        <div class="clues-investigation-wrapper">
+          <div class="act-header">
+            <div>
+              <div class="act-label">Act II • Evidence Gathering & Node/Edge Extraction</div>
+              <h3 class="act-title">Gather the Three Forensic Clues</h3>
+            </div>
+            <div class="simulation-actions-header">
+              <button id="btn-simulate-all-clues" class="btn-simulation-trigger" title="Simulate extraction from all 3 planes simultaneously">
+                <span>⚡</span> Run Full Plane Simulation
+              </button>
+            </div>
+          </div>
+          <p class="doc-text">
+            Click each card below to inspect forensic breadcrumbs. As evidence is gathered, our extraction engine parses raw artifacts into <strong>graph nodes</strong> (entities) and <strong>directed edges</strong> (dependencies) in the simulation below:
+          </p>
+
+          <div class="clue-grid">
+            <!-- Clue 1: Static -->
+            <div class="clue-card" id="card-clue-static" data-dala="static-evidence">
+              <div>
+                <span class="clue-badge">Clue #1 • Static Plane</span>
+                <h4 class="clue-title">Code Breadcrumbs</h4>
+                <p class="clue-desc">Parsed from Git repos without running code. Tree-sitter & SQLGlot reveal what code <i>could</i> do.</p>
+                <div class="clue-snippet">
+                  // RiskService.java:112<br>
+                  SELECT id, credit_score FROM customers<br>
+                  AST: Tree-sitter + SQLGlot Parser
+                </div>
+              </div>
+              <button class="btn-collect" data-clue="static" id="btn-clue-static">Inspect & Collect Clue #1</button>
+            </div>
+
+            <!-- Clue 2: Metadata -->
+            <div class="clue-card" id="card-clue-metadata" data-dala="metadata-evidence">
+              <div>
+                <span class="clue-badge">Clue #2 • Metadata Plane</span>
+                <h4 class="clue-title">Catalog Fingerprints</h4>
+                <p class="clue-desc">Extracted from database schemas & dbt manifests. Proves table definitions and column ownership.</p>
+                <div class="clue-snippet">
+                  // dbt manifest.json<br>
+                  model: daily_risk_summary<br>
+                  depends_on: [risk_enriched_orders]
+                </div>
+              </div>
+              <button class="btn-collect" data-clue="metadata" id="btn-clue-metadata">Query & Collect Clue #2</button>
+            </div>
+
+            <!-- Clue 3: Runtime -->
+            <div class="clue-card" id="card-clue-runtime" data-dala="runtime-evidence">
+              <div>
+                <span class="clue-badge">Clue #3 • Runtime Plane</span>
+                <h4 class="clue-title">Runtime Eyewitness</h4>
+                <p class="clue-desc">Observed from live executions. OpenLineage events & query logs prove what <i>actually ran</i>.</p>
+                <div class="clue-snippet">
+                  // OpenLineage RunFacet #8912<br>
+                  input: dataset://postgres/customers<br>
+                  timestamp: 2026-10-10 08:00 UTC
+                </div>
+              </div>
+              <button class="btn-collect" data-clue="runtime" id="btn-clue-runtime">Analyze & Collect Clue #3</button>
+            </div>
+          </div>
+
+          <!-- Live Node & Edge Extraction Simulation Workbench -->
+          <div class="simulation-workbench" id="simulation-workbench" data-dala="evidence-synthesis">
+            <div class="sim-workbench-header">
+              <div class="sim-title-group">
+                <span class="sim-pulse-dot"></span>
+                <h4 class="sim-heading">Live Plane Extraction Simulation: Forensic Node & Edge Synthesis</h4>
+              </div>
+              <div class="sim-telemetry-hud">
+                <div class="sim-stat-pill">
+                  <span class="sim-stat-label">Nodes Discovered</span>
+                  <span class="sim-stat-value" id="sim-node-count">0 / 6</span>
+                </div>
+                <div class="sim-stat-pill">
+                  <span class="sim-stat-label">Edges Formed</span>
+                  <span class="sim-stat-value" id="sim-edge-count">0 / 5</span>
+                </div>
+                <div class="sim-stat-pill highlight">
+                  <span class="sim-stat-label">Fabric Confidence</span>
+                  <span class="sim-stat-value" id="sim-confidence-val">0%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Plane Extraction Zones Grid -->
+            <div class="sim-planes-grid">
+              <!-- Plane 1 Zone -->
+              <div class="sim-plane-col" id="sim-col-static">
+                <div class="sim-plane-header">
+                  <span class="sim-plane-tag static">Plane 1 • Static (Code AST)</span>
+                  <span class="sim-status-badge" id="sim-status-static">Idle</span>
+                </div>
+                <div class="sim-extracted-box" id="sim-box-static">
+                  <div class="sim-placeholder-text">Awaiting Static AST scan...</div>
+                  <div class="sim-entity-item" data-entity="node-risk-service">
+                    <span class="sim-icon">💻</span>
+                    <div class="sim-entity-meta">
+                      <strong>RiskService.java</strong>
+                      <small>Node • Spring Boot Microservice</small>
+                    </div>
+                  </div>
+                  <div class="sim-entity-item" data-entity="node-customers-ref">
+                    <span class="sim-icon">🗄️</span>
+                    <div class="sim-entity-meta">
+                      <strong>customers (AST Ref)</strong>
+                      <small>Node • Target Postgres Schema</small>
+                    </div>
+                  </div>
+                  <div class="sim-edge-item" data-edge="edge-static-ast">
+                    <span class="sim-edge-line"></span>
+                    <span class="sim-edge-label">Edge ➔ AST SELECT query (customers.credit_score)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Plane 2 Zone -->
+              <div class="sim-plane-col" id="sim-col-metadata">
+                <div class="sim-plane-header">
+                  <span class="sim-plane-tag metadata">Plane 2 • Metadata (Catalog)</span>
+                  <span class="sim-status-badge" id="sim-status-metadata">Idle</span>
+                </div>
+                <div class="sim-extracted-box" id="sim-box-metadata">
+                  <div class="sim-placeholder-text">Awaiting Catalog Schema query...</div>
+                  <div class="sim-entity-item" data-entity="node-dbt-summary">
+                    <span class="sim-icon">❄️</span>
+                    <div class="sim-entity-meta">
+                      <strong>daily_risk_summary</strong>
+                      <small>Node • Snowflake dbt Transformation</small>
+                    </div>
+                  </div>
+                  <div class="sim-entity-item" data-entity="node-enriched-orders">
+                    <span class="sim-icon">📊</span>
+                    <div class="sim-entity-meta">
+                      <strong>risk_enriched_orders</strong>
+                      <small>Node • Declared Upstream Model</small>
+                    </div>
+                  </div>
+                  <div class="sim-edge-item" data-edge="edge-meta-dbt">
+                    <span class="sim-edge-line"></span>
+                    <span class="sim-edge-label">Edge ➔ dbt depends_on manifest dependency</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Plane 3 Zone -->
+              <div class="sim-plane-col" id="sim-col-runtime">
+                <div class="sim-plane-header">
+                  <span class="sim-plane-tag runtime">Plane 3 • Runtime (OpenLineage)</span>
+                  <span class="sim-status-badge" id="sim-status-runtime">Idle</span>
+                </div>
+                <div class="sim-extracted-box" id="sim-box-runtime">
+                  <div class="sim-placeholder-text">Awaiting Execution Telemetry...</div>
+                  <div class="sim-entity-item" data-entity="node-enricher-job">
+                    <span class="sim-icon">🔄</span>
+                    <div class="sim-entity-meta">
+                      <strong>batch_risk_enricher.py</strong>
+                      <small>Node • PySpark Active Job</small>
+                    </div>
+                  </div>
+                  <div class="sim-entity-item" data-entity="node-run-facet">
+                    <span class="sim-icon">⚡</span>
+                    <div class="sim-entity-meta">
+                      <strong>RunFacet #8912</strong>
+                      <small>Node • OpenLineage Verified Event</small>
+                    </div>
+                  </div>
+                  <div class="sim-edge-item" data-edge="edge-runtime-write">
+                    <span class="sim-edge-line"></span>
+                    <span class="sim-edge-label">Edge ➔ Active write to risk_enriched_orders</span>
+                  </div>
+                  <div class="sim-edge-item" data-edge="edge-cross-bridge">
+                    <span class="sim-edge-line bridge"></span>
+                    <span class="sim-edge-label">Edge ➔ Cross-Plane Bridge: Java ➔ Python</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unified Lineage Convergence Pipeline Preview -->
+            <div class="sim-convergence-preview" id="sim-convergence-preview">
+              <div class="sim-conv-header">
+                <strong>🧬 Synthesized Multi-Plane Lineage Chain:</strong>
+                <span id="sim-conv-status" class="sim-conv-pill">Awaiting Clues</span>
+              </div>
+              <div class="sim-pipeline-track">
+                <div class="sim-track-node" id="track-node-1">
+                  <span class="sim-track-badge">1. Schema</span>
+                  <strong>customers</strong>
+                </div>
+                <div class="sim-track-arrow" id="track-arr-1">➔</div>
+                <div class="sim-track-node" id="track-node-2">
+                  <span class="sim-track-badge">2. Java Code</span>
+                  <strong>RiskService.java</strong>
+                </div>
+                <div class="sim-track-arrow" id="track-arr-2">➔</div>
+                <div class="sim-track-node" id="track-node-3">
+                  <span class="sim-track-badge">3. PySpark Job</span>
+                  <strong>batch_risk_enricher</strong>
+                </div>
+                <div class="sim-track-arrow" id="track-arr-3">➔</div>
+                <div class="sim-track-node" id="track-node-4">
+                  <span class="sim-track-badge">4. Snowflake DWH</span>
+                  <strong>daily_risk_summary</strong>
+                </div>
+                <div class="sim-track-arrow" id="track-arr-4">➔</div>
+                <div class="sim-track-node" id="track-node-5">
+                  <span class="sim-track-badge">5. Power BI</span>
+                  <strong>Executive Revenue KPI</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Terminal Event Stream -->
+            <div class="sim-terminal-log">
+              <div class="sim-terminal-head">
+                <span>SIMULATION FORENSIC TELEMETRY STREAM</span>
+                <span id="sim-log-indicator">READY</span>
+              </div>
+              <div class="sim-terminal-body" id="sim-terminal-body">
+                <div class="sim-log-line info">&gt; Engine initialized. Click Clue cards or 'Run Full Plane Simulation' to extract nodes and edges.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Act 3: Solving the Hardest Riddles -->
+      <article class="act-card" id="deduction-unlock-card">
         <div class="act-header">
           <div>
             <div class="act-label">Act III • The Breakthrough</div>
-            <h2 class="act-title">Solving the Doppelgänger Identity Riddle</h2>
+            <h2 class="act-title">Solving the Hardest Riddles</h2>
           </div>
-          <span style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.8rem; font-weight:700;">UNLOCKED 🔓</span>
+          <span style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.8rem; font-weight:700;">CONQUERING REALITY</span>
         </div>
         <p class="doc-text">
-          All 3 clues are synced! But there is a trap: We found 4 different tables named <code>CUSTOMERS</code> across the enterprise. If we merge them by name, our lineage turns into a tangled lie.
+          Even with clues collected, enterprise data contains deceptive traps that break naive lineage graphs. Here is how our deduction engine solves the three hardest riddles:
         </p>
 
-        <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:12px; padding:1.5rem; margin:1.5rem 0;">
-          <div id="identity-table-list" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem;">
-            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
-              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
-              <span style="color:#d97706; font-weight:600;">Environment: DEV (Mock Data)</span>
+        <div class="riddle-container">
+          <!-- Riddle 1: The Doppelgänger Trap -->
+          <div class="riddle-box" data-dala="dataset-identity">
+            <div class="riddle-header">
+              <div class="riddle-title">
+                <span>🎭</span> Riddle 1: The Doppelgänger Trap (Dataset Identity)
+              </div>
+              <span style="font-size:0.8rem; color:#d97706; font-weight:700;">COLLISION RISK</span>
             </div>
-            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
-              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
-              <span style="color:#d97706; font-weight:600;">Environment: STAGING (Test Data)</span>
+            <p class="doc-text" style="margin-bottom:0.85rem;">
+              <strong>The Puzzle:</strong> We found 4 different tables named <code>CUSTOMERS</code> across the enterprise. If we merge them by name, our lineage graph becomes a tangled web of lies:
+            </p>
+
+            <div id="identity-table-list" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem;">
+              <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+                <span style="color:#d97706; font-weight:600; font-size:0.85rem;">Environment: DEV (Mock Data)</span>
+              </div>
+              <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+                <span style="color:#d97706; font-weight:600; font-size:0.85rem;">Environment: STAGING (Test Data)</span>
+              </div>
+              <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+                <span style="color:#059669; font-weight:600; font-size:0.85rem;">Environment: PROD (Postgres US-East)</span>
+              </div>
+              <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+                <span style="color:#2563eb; font-weight:600; font-size:0.85rem;">Environment: PROD (Snowflake Analytics)</span>
+              </div>
             </div>
-            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
-              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
-              <span style="color:#059669; font-weight:600;">Environment: PROD (Postgres US-East)</span>
+
+            <div id="identity-resolved-list" style="display:none; grid-template-columns:1fr; gap:0.75rem; margin-bottom:1.25rem;">
+              <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+                ✅ dataset://postgres/tenant_us/dev/cluster_01/public/customers
+              </div>
+              <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+                ✅ dataset://postgres/tenant_us/staging/cluster_01/public/customers
+              </div>
+              <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+                ✅ dataset://postgres/tenant_us/prod/cluster_02/core/customers
+              </div>
+              <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+                ✅ dataset://snowflake/corp_risk/prod/dw_finance/analytics/customers
+              </div>
             </div>
-            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
-              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
-              <span style="color:#2563eb; font-weight:600;">Environment: PROD (Snowflake Analytics)</span>
+
+            <button id="btn-resolve-identities" class="btn-collect" style="max-width:380px;">⚡ Resolve into Canonical 6-Tuple URIs</button>
+          </div>
+
+          <!-- Riddle 2: The 5 Layers of Reality -->
+          <div class="riddle-box">
+            <div class="riddle-header">
+              <div class="riddle-title">
+                <span>🔍</span> Riddle 2: The 5 Layers of Reality (Zoom Hierarchy)
+              </div>
+              <span style="font-size:0.8rem; color:var(--blue-primary); font-weight:700;">MULTI-PERSONA EXPLORER</span>
+            </div>
+            <p class="doc-text" style="margin-bottom:0.75rem;">
+              <strong>The Puzzle:</strong> Different stakeholders need different levels of detail. The CFO cares about high-level domains, while the developer needs the exact line of Java code.
+            </p>
+
+            <div class="zoom-btn-group">
+              <button class="btn-zoom-level active" id="zoom-btn-l1" data-level="1">L1: Enterprise Domain</button>
+              <button class="btn-zoom-level" id="zoom-btn-l2" data-level="2">L2: Application / Service</button>
+              <button class="btn-zoom-level" id="zoom-btn-l3" data-level="3">L3: Dataset / Table</button>
+              <button class="btn-zoom-level" id="zoom-btn-l4" data-level="4">L4: Column / Field (CLL)</button>
+              <button class="btn-zoom-level" id="zoom-btn-l5" data-level="5">L5: Code & Runtime</button>
+            </div>
+
+            <div class="zoom-preview-box" id="zoom-preview-container">
+              <span class="zoom-badge" id="zoom-preview-badge">Level 1 • High-Level Enterprise Domain</span>
+              <div style="font-size:0.95rem; font-weight:700; color:var(--text-main); margin-bottom:0.35rem;" id="zoom-preview-title">
+                Domain-Level Data Flow: Wealth Management ➔ Corporate Risk
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;" id="zoom-preview-desc">
+                <strong>Target Persona:</strong> CFO, CDO, and Business Executives.<br>
+                <strong>Reveals:</strong> Cross-domain data governance boundaries without cluttering the screen with database tables or code methods.
+              </div>
+              <div style="font-family:var(--font-mono); font-size:0.78rem; background:#ffffff; border:1px solid #e2e8f0; padding:0.6rem 0.8rem; border-radius:6px; margin-top:0.6rem; color:#0284c7;" id="zoom-preview-nodes">
+                Domain: Wealth_Management ──[EXCHANGES_DATA]──▶ Domain: Corporate_Risk
+              </div>
             </div>
           </div>
 
-          <div id="identity-resolved-list" style="display:none; grid-template-columns:1fr; gap:0.75rem; margin-bottom:1.25rem;">
-            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
-              ✅ dataset://postgres/tenant_us/dev/cluster_01/public/customers
+          <!-- Riddle 3: The Ghost Dependency -->
+          <div class="riddle-box" data-dala="ghost-riddles">
+            <div class="riddle-header">
+              <div class="riddle-title">
+                <span>👻</span> Riddle 3: The Ghost Dependency (Control vs. Data Flow)
+              </div>
+              <span style="font-size:0.8rem; color:#059669; font-weight:700;">PRECISION RULE</span>
             </div>
-            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
-              ✅ dataset://postgres/tenant_us/staging/cluster_01/public/customers
+            <p class="doc-text" style="margin-bottom:0.75rem;">
+              <strong>The Puzzle:</strong> In Apache Airflow, <code>Task A >> Task B</code> defines execution sequence. Does that mean data physically flows from Task A to Task B?
+            </p>
+
+            <div class="ghost-dep-grid">
+              <div class="ghost-card control" id="ghost-card-control">
+                <div style="font-weight:700; color:#d97706; font-size:0.9rem; margin-bottom:0.35rem;">
+                  ⏱️ Control Flow: <code>DEPENDS_ON</code>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
+                  <strong>Airflow Task Graph:</strong> Task A triggers Task B in temporal sequence (e.g., Slack alert, lock cleanup).<br>
+                  <em>Warning:</em> Drawing data lineage arrows here creates false ghost links!
+                </div>
+              </div>
+
+              <div class="ghost-card data highlight" id="ghost-card-data">
+                <div style="font-weight:700; color:#059669; font-size:0.9rem; margin-bottom:0.35rem;">
+                  📦 Physical Data Lineage: <code>TRANSFORMS_TO</code>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
+                  <strong>Byte Movement:</strong> Task A writes physical records to Postgres/S3, and Task B reads those exact bytes.<br>
+                  <em>Our Rule:</em> We never draw a data arrow unless bytes physically moved.
+                </div>
+              </div>
             </div>
-            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
-              ✅ dataset://postgres/tenant_us/prod/cluster_02/core/customers
-            </div>
-            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
-              ✅ dataset://snowflake/corp_risk/prod/dw_finance/analytics/customers
+
+            <div style="margin-top:1rem;">
+              <button id="btn-toggle-ghost-dep" class="btn-graph-action" style="background:#ffffff; color:var(--text-main); font-weight:700;">
+                🔄 Toggle Perspective: Control Flow vs Data Flow
+              </button>
             </div>
           </div>
-
-          <button id="btn-resolve-identities" class="btn-collect" style="max-width:360px;">⚡ Resolve into Canonical 6-Tuple URIs</button>
         </div>
       </article>
 
-      <!-- Act 4: The Blast Radius Simulator -->
+      <!-- Act IV: Assembling the Deduction Engine (System Architecture & Live Lineage Fabric) -->
       <article class="act-card">
         <div class="act-header">
           <div>
-            <div class="act-label">Act IV • Prevention Engine</div>
-            <h2 class="act-title">The Blast Radius Simulator (Sandbox)</h2>
+            <div class="act-label">Act IV • System Architecture</div>
+            <h2 class="act-title">Assembling the Deduction Engine</h2>
           </div>
-          <span style="color:var(--amber-warning); font-size:0.85rem; font-weight:600;">Interactive Impact Testing</span>
+          <span style="color:var(--blue-primary); font-size:0.85rem; font-weight:600;">The 4-Component Machine</span>
         </div>
         <p class="doc-text">
-          How do we stop Monday morning outages before code is merged? Test a proposed change in our simulation engine to calculate the downstream blast radius:
+          With our clues gathered and riddles conquered, we assembled the complete machine that continuously stitches the enterprise estate together:
+        </p>
+
+        <img src="assets/modern_architecture.png" alt="System Architecture" style="width:100%; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.5rem; box-shadow:var(--shadow-card);">
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:8px; padding:1rem;">
+            <div style="font-weight:700; color:var(--blue-primary); font-size:0.9rem; margin-bottom:0.3rem;">1. Ingestion Net</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Read-only connectors scan Git commits, database schemas, and OpenLineage events using least-privilege tokens.</div>
+          </div>
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:8px; padding:1rem;">
+            <div style="font-weight:700; color:#7c3aed; font-size:0.9rem; margin-bottom:0.3rem;">2. Compiler Core</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Tree-sitter and SQLGlot extract ASTs, trace CTE expressions, and unwrap dynamic aliases into normalized entities.</div>
+          </div>
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:8px; padding:1rem;">
+            <div style="font-weight:700; color:#059669; font-size:0.9rem; margin-bottom:0.3rem;">3. The Graph Brain</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Neo4j executes multi-hop traversals in milliseconds, while PostgreSQL persists audit logs and proof records.</div>
+          </div>
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:8px; padding:1rem;">
+            <div style="font-weight:700; color:#d97706; font-size:0.9rem; margin-bottom:0.3rem;">4. Detective's Canvas</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Interactive canvas that lets users click any node, expand upstream origins, inspect code evidence, and simulate changes.</div>
+          </div>
+        </div>
+
+        <!-- Interactive Node & Edge Lineage Graph Explorer -->
+        <div class="graph-canvas-card" data-dala="lineage-graph">
+          <div class="graph-canvas-header">
+            <div>
+              <div class="act-label">Operating the Live Engine</div>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">
+                Live Node & Edge Lineage Graph
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+                Click any node to inspect upstream origin, downstream impact, and verified forensic proofs.
+              </p>
+            </div>
+            
+            <div class="graph-controls">
+              <button id="btn-trace-flow" class="btn-graph-action active" title="Trace data packets flowing across the graph">
+                <span>▶</span> Trace Data Flow Animation
+              </button>
+              <button id="btn-show-cll" class="btn-graph-action" title="Highlight column-level transformation flow">
+                <span>⚡</span> Inspect Column Lineage
+              </button>
+              <button id="btn-simulate-break" class="btn-graph-action" title="Simulate Friday's breaking column drop outage">
+                <span>💥</span> Simulate Friday Outage
+              </button>
+              <button id="btn-reset-graph" class="btn-graph-action" title="Reset filters and animations">
+                <span>↺</span> Reset
+              </button>
+              <div style="display:flex; gap:0.25rem; background:#ffffff; border:1px solid var(--border-color); padding:0.2rem; border-radius:8px;">
+                <button class="btn-graph-action btn-filter-tier active" data-tier="all">All</button>
+                <button class="btn-graph-action btn-filter-tier" data-tier="table">Tables</button>
+                <button class="btn-graph-action btn-filter-tier" data-tier="code">Code</button>
+                <button class="btn-graph-action btn-filter-tier" data-tier="job">Jobs</button>
+                <button class="btn-graph-action btn-filter-tier" data-tier="bi">BI</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-Stage Architectural Flow Indicators -->
+          <div class="canvas-stages-header">
+            <div class="stage-step"><span>🗄️</span> 1. Source Tables</div>
+            <div class="stage-step"><span>💻</span> 2. Service Code</div>
+            <div class="stage-step"><span>🔄</span> 3. ETL Pipeline</div>
+            <div class="stage-step"><span>❄️</span> 4. Data Warehouse</div>
+            <div class="stage-step"><span>📊</span> 5. Final Lineage (KPI)</div>
+          </div>
+
+          <!-- Interactive Deterministic SVG Canvas Viewport -->
+          <div id="graph-viewport" class="graph-viewport">
+            <svg id="lineage-svg-canvas" viewBox="0 0 1260 410"></svg>
+          </div>
+
+          <!-- Node Inspector Drawer -->
+          <div id="node-inspector" class="node-inspector-drawer">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+              <div>
+                <h3 id="insp-name" style="font-family:var(--font-heading); font-size:1.3rem; font-weight:800; color:var(--text-main);">Selected Node</h3>
+                <div id="insp-type" style="font-size:0.85rem; color:var(--blue-primary); font-weight:600; margin-top:0.2rem;">Technology</div>
+              </div>
+              <span id="insp-confidence" class="badge-confirmed">98% Verified</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; font-size:0.85rem;">
+              <div>
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Owner / Squad</div>
+                <div id="insp-owner" style="color:var(--text-muted);">Platform Team</div>
+                
+                <div style="font-weight:700; color:var(--text-main); margin-top:0.75rem; margin-bottom:0.25rem;">Physical Location</div>
+                <code id="insp-location" style="font-family:var(--font-mono); font-size:0.8rem; background:#ffffff; padding:0.2rem 0.5rem; border-radius:4px; border:1px solid #e2e8f0; color:#2563eb;">repo/path</code>
+              </div>
+
+              <div>
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">◄ Direct Upstream Origin</div>
+                <div id="insp-upstream" style="color:#0284c7; font-weight:600; margin-bottom:0.75rem;">None</div>
+
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">► Direct Downstream Consumer</div>
+                <div id="insp-downstream" style="color:#7c3aed; font-weight:600;">None</div>
+              </div>
+
+              <div>
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Key Columns / Attributes</div>
+                <ul id="insp-columns" style="color:var(--text-muted); padding-left:1.2rem; line-height:1.6;"></ul>
+              </div>
+
+              <div style="grid-column:1 / -1;">
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Supporting Forensic Proof (Evidence Plane)</div>
+                <div id="insp-evidence" style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid var(--emerald-success); padding:0.6rem 0.85rem; border-radius:4px; font-family:var(--font-mono); font-size:0.8rem; color:#047857;">
+                  Verified proof description
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Act V: The Blast Radius Simulator -->
+      <article class="act-card" data-dala="impact-simulator">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act V • Automated Prevention</div>
+            <h2 class="act-title">Simulating the Crime (Automated Blast Radius)</h2>
+          </div>
+          <span style="color:var(--amber-warning); font-size:0.85rem; font-weight:600;">PR Gate Testing</span>
+        </div>
+        <p class="doc-text">
+          Remember our Monday morning crisis? With our deduction engine running, that crisis <strong>can never happen again.</strong> Before any engineer merges code, they run an automated <strong>Impact Analysis Simulation</strong>:
         </p>
 
         <div class="sim-container">
@@ -349,20 +830,23 @@
               <strong>Severity:</strong> <span id="sim-severity-badge" style="color:#b91c1c; font-weight:700;"></span>
             </div>
 
-            <div style="margin-bottom:1rem; font-weight:700; color:var(--text-main);">Affected Downstream Nodes Traversed:</div>
+            <div style="margin-bottom:1rem; font-weight:700; color:var(--text-main);">Affected Downstream Assets Traversed:</div>
             <div id="sim-nodes-grid" class="blast-nodes-grid"></div>
 
-            <div id="sim-gate-banner" style="margin-top:1.5rem; padding:1rem; background:#ffffff; border:1px solid #fecaca; border-radius:8px; font-family:var(--font-mono); font-size:0.85rem; color:#b91c1c;"></div>
+            <div style="margin-top:1.5rem;">
+              <div style="font-weight:700; color:#b91c1c; font-size:0.9rem; margin-bottom:0.5rem;">GitHub Pull Request Gate Status:</div>
+              <div id="sim-gate-banner" style="padding:1rem; background:#ffffff; border:1px solid #fecaca; border-radius:8px; font-family:var(--font-mono); font-size:0.85rem; color:#b91c1c;"></div>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- Act 5: The Case Solved & Final Lineage Output -->
+      <!-- Act VI: The Grand Finale & Final Output Lineage DAG -->
       <article class="act-card" id="dossier-unlock-card">
         <div class="act-header">
           <div>
-            <div class="act-label">Act V • The Output Dossier</div>
-            <h2 class="act-title">The End Result: Complete Enterprise Lineage DAG</h2>
+            <div class="act-label">Act VI • The Grand Finale</div>
+            <h2 class="act-title">The Big Picture: What We Have Collected & Solved</h2>
           </div>
           <span class="badge-confirmed">CONFIRMED EVIDENCE FABRIC</span>
         </div>
@@ -461,7 +945,7 @@
         </div>
 
         <!-- The Master Evidence Dossier Card -->
-        <div class="dossier-card">
+        <div class="dossier-card" data-dala="audit-dossier">
           <div class="dossier-header">
             <div>
               <div style="color:var(--blue-primary); font-size:1.15rem; font-weight:800;">TARGET ASSET: dataset://snowflake/corp_risk/prod/dw_finance/analytics/daily_risk_summary</div>
@@ -504,6 +988,96 @@
                 <span style="font-size:0.75rem; color:var(--text-dim);">Verified via SQLGlot 23.0 AST • Dialect: Snowflake • Scopes: 2 nested Common Table Expressions (CTEs)</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- 90-Day Implementation Roadmap -->
+        <div style="margin-top:2rem;">
+          <h4 style="font-family:var(--font-heading); color:var(--text-main); font-size:1.15rem; margin-bottom:0.4rem;">
+            🗺️ The 90-Day Focused Blueprint
+          </h4>
+          <p class="doc-text" style="font-size:0.88rem; margin-bottom:1rem;">
+            How do we take this from concept to working enterprise reality? We don't try to build the universe on day one. We follow a strict 90-day phased pilot:
+          </p>
+          <div class="roadmap-grid">
+            <div class="roadmap-card">
+              <div class="roadmap-phase-num">Phase 0</div>
+              <div class="roadmap-days">Days 1–15</div>
+              <div class="roadmap-bullet">• Ground truth benchmark</div>
+              <div class="roadmap-bullet">• Canonical URI spec</div>
+              <div class="roadmap-bullet">• Security & token review</div>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-phase-num">Phase 1</div>
+              <div class="roadmap-days">Days 16–35</div>
+              <div class="roadmap-bullet">• Tree-sitter & SQLGlot core</div>
+              <div class="roadmap-bullet">• Table-level read/write</div>
+              <div class="roadmap-bullet">• Neo4j graph store setup</div>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-phase-num">Phase 2</div>
+              <div class="roadmap-days">Days 36–55</div>
+              <div class="roadmap-bullet">• Identity resolver engine</div>
+              <div class="roadmap-bullet">• Column AST expression trace</div>
+              <div class="roadmap-bullet">• DB schema API connectors</div>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-phase-num">Phase 3 & 4</div>
+              <div class="roadmap-days">Days 56–75</div>
+              <div class="roadmap-bullet">• Interactive visual UI</div>
+              <div class="roadmap-bullet">• Impact analysis API</div>
+              <div class="roadmap-bullet">• Incremental Git diff parser</div>
+            </div>
+            <div class="roadmap-card" style="border-color:#059669; background:#f0fdf4;">
+              <div class="roadmap-phase-num" style="color:#059669;">Phase 5 Pilot</div>
+              <div class="roadmap-days" style="color:#065f46;">Days 76–90</div>
+              <div class="roadmap-bullet" style="color:#166534;">• Multi-hop traversal demo</div>
+              <div class="roadmap-bullet" style="color:#166534;">• 95%+ precision benchmark</div>
+              <div class="roadmap-bullet" style="color:#166534;">• Production readiness signoff</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What We Reuse vs What We Build Table -->
+        <div style="margin-top:1.75rem;">
+          <h4 style="font-family:var(--font-heading); color:var(--text-main); font-size:1.1rem; margin-bottom:0.6rem;">
+            ⚖️ What We Reuse vs. What We Build
+          </h4>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>What We Reuse (Commodity Infrastructure)</th>
+                  <th>What We Build (Our Proprietary Lineage Value)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>• Syntax Parsing: <strong>Tree-sitter</strong></td>
+                  <td>• <strong>Cross-System Evidence Engine</strong> (3 Independent Planes)</td>
+                </tr>
+                <tr>
+                  <td>• SQL Dialects: <strong>SQLGlot</strong></td>
+                  <td>• <strong>Canonical Identity Resolver</strong> (6-Tuple Deterministic URIs)</td>
+                </tr>
+                <tr>
+                  <td>• Event Telemetry: <strong>OpenLineage</strong></td>
+                  <td>• <strong>Code-to-Column Expression Tracer</strong> (AST CTE Unfolder)</td>
+                </tr>
+                <tr>
+                  <td>• Graph Engine: <strong>Neo4j</strong> (Cypher)</td>
+                  <td>• <strong>Blast-Radius Impact Analysis Engine</strong></td>
+                </tr>
+                <tr>
+                  <td>• Relational Store: <strong>PostgreSQL</strong></td>
+                  <td>• <strong>Incremental Git Reconciliation Engine</strong></td>
+                </tr>
+                <tr>
+                  <td>• UI Visual Canvas: <strong>SVG / React Flow</strong></td>
+                  <td>• <strong>Evidence-Backed Trust & Coverage Scoring</strong></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -1278,10 +1852,252 @@ RETURN path, [n IN nodes(path) | n.name] AS asset_chain, [r IN relationships(pat
 
   </main>
 
-  <footer style="border-top:1px solid #e2e8f0; padding:2rem; text-align:center; color:var(--text-muted); font-size:0.85rem; background:#ffffff;">
-    LineageForge Enterprise Platform • Evidence-Backed Data Lineage & Dependency Resolution • 
-    <a href="https://github.com/TestAccount-04/datalineage.git" style="color:var(--blue-primary); text-decoration:none; font-weight:600;" target="_blank">github.com/TestAccount-04/datalineage</a>
-  </footer>
+  <!-- =========================================================================
+       DALA: TOUR FINISH CELEBRATION MODAL
+       ========================================================================= -->
+  <div id="dala-finish-modal" class="dala-modal-backdrop" style="display: none;" aria-hidden="true">
+    <div class="dala-finish-card">
+      <button id="dala-finish-close-btn" class="dala-modal-close" aria-label="Close Modal">&times;</button>
+      
+      <div id="dala-finish-badge" class="dala-finish-badge">🏆 MISSION ACCOMPLISHED • CASE CLOSED</div>
+      
+      <div class="dala-finish-character-hero">
+        <div class="dala-finish-avatar-wrap">
+          <span class="dala-finish-avatar-icon">🕵️‍♂️</span>
+          <div class="dala-celebration-sparkle">✨</div>
+        </div>
+        <h2 id="dala-finish-title" class="dala-finish-title">Investigation Successfully Solved!</h2>
+        <p id="dala-finish-subtitle" class="dala-finish-subtitle">
+          98% Confidence End-to-End Lineage Fabric Established Across All 20 Enterprise Systems
+        </p>
+      </div>
+
+      <div id="dala-finish-stats-grid" class="dala-finish-stats-grid">
+        <div class="dala-stat-card">
+          <div class="dala-stat-num">3 / 3</div>
+          <div class="dala-stat-label">Evidence Planes Intercepted</div>
+          <div class="dala-stat-sub">Static AST • Catalog • Runtime</div>
+        </div>
+        <div class="dala-stat-card">
+          <div class="dala-stat-num">5 Hops</div>
+          <div class="dala-stat-label">Domino Outage Trail Mapped</div>
+          <div class="dala-stat-sub">Java API ➔ Snowflake ➔ Power BI</div>
+        </div>
+        <div class="dala-stat-card">
+          <div class="dala-stat-num">100%</div>
+          <div class="dala-stat-label">Blast Radius Contained</div>
+          <div class="dala-stat-sub">Automated CI/CD PR Gate Protected</div>
+        </div>
+      </div>
+
+      <div class="dala-finish-callout">
+        <div class="dala-finish-callout-icon">💡</div>
+        <div id="dala-finish-callout-text" class="dala-finish-callout-text">
+          <strong>Next Step:</strong> Explore the complete <strong>Detailed Technical Blueprint</strong> to inspect the 6-layer architecture, ERD schema, and 90-day implementation roadmap!
+        </div>
+      </div>
+
+      <div class="dala-finish-actions">
+        <button id="dala-finish-to-detailed" class="dala-finish-btn-primary">
+          <span>📐 Explore Detailed Blueprint</span>
+        </button>
+        <button id="dala-finish-replay" class="dala-finish-btn-secondary">
+          <span>↺ Replay Investigation</span>
+        </button>
+        <button id="dala-finish-explore-free" class="dala-finish-btn-ghost">
+          <span>Dismiss & Explore Free-hand</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       DALA: INTERACTIVE IN-APP TRAVELING CHARACTER GUIDE
+       ========================================================================= -->
+  <div id="dala-character-host" class="dala-character-host dock-right dala-welcome" aria-label="DaLa Interactive Guide">
+    
+    <!-- Animated SVG Character Unit -->
+    <div id="dala-character-unit" class="dala-character-unit" role="button" tabindex="0" title="Click DaLa to toggle dialogue">
+      
+      <!-- Ambient Glow Aura -->
+      <div class="dala-aura"></div>
+      
+      <!-- Detached Left Floating Hand -->
+      <div class="dala-hand dala-hand-left">
+        <svg viewBox="0 0 28 28" width="28" height="28">
+          <ellipse cx="14" cy="14" rx="10" ry="10" fill="url(#dala-grad-hand)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))" />
+          <ellipse cx="14" cy="14" rx="7" ry="7" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2" />
+        </svg>
+      </div>
+
+      <!-- Main Body / Head Frame with SVG Artwork -->
+      <div class="dala-avatar-svg-wrap">
+        <svg class="dala-svg" viewBox="0 0 120 120" width="100" height="100">
+          <defs>
+            <!-- Head Sphere Gradients -->
+            <radialGradient id="dala-grad-head" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="40%" stop-color="#e0f2fe"/>
+              <stop offset="80%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </radialGradient>
+            
+            <!-- Visor Dark Mirror Glass -->
+            <linearGradient id="dala-grad-visor" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0f172a"/>
+              <stop offset="60%" stop-color="#1e293b"/>
+              <stop offset="100%" stop-color="#090d16"/>
+            </linearGradient>
+
+            <!-- Fedora Brim Hologram -->
+            <linearGradient id="dala-grad-fedora" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+              <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2"/>
+            </linearGradient>
+
+            <!-- Hand Gradient -->
+            <radialGradient id="dala-grad-hand" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="60%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </radialGradient>
+
+            <!-- Drop Filter Glow -->
+            <filter id="dala-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Floating Detective Fedora Halo Ring -->
+          <g class="dala-fedora-group">
+            <ellipse cx="60" cy="22" rx="38" ry="7" fill="url(#dala-grad-fedora)" filter="url(#dala-glow)"/>
+            <path d="M42 21 C42 12, 78 12, 78 21 Z" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8"/>
+            <ellipse cx="60" cy="21" rx="18" ry="3.5" fill="#38bdf8" opacity="0.6"/>
+            <!-- Neon Detective Ribbon -->
+            <path d="M44 20 Q60 23 76 20" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+          </g>
+
+          <!-- Head Outer Sphere -->
+          <circle cx="60" cy="64" r="38" fill="url(#dala-grad-head)" filter="drop-shadow(0 8px 16px rgba(2,132,199,0.35))"/>
+          
+          <!-- Glossy Head Highlight -->
+          <ellipse cx="48" cy="42" rx="14" ry="7" fill="#ffffff" opacity="0.55" transform="rotate(-20 48 42)"/>
+
+          <!-- High-Tech Visor Screen -->
+          <rect x="30" y="49" width="60" height="30" rx="14" fill="url(#dala-grad-visor)" stroke="#38bdf8" stroke-width="2"/>
+          <path d="M34 53 Q60 57 86 53" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+
+          <!-- Dynamic Expressive Eyes Group (Animated via CSS classes) -->
+          <g class="dala-eyes-container">
+            <!-- Left Eye -->
+            <g class="dala-eye dala-eye-left">
+              <ellipse class="eye-pupil" cx="48" cy="64" rx="5" ry="6" fill="#38bdf8"/>
+              <circle class="eye-shine" cx="46" cy="62" r="2" fill="#ffffff"/>
+              <!-- Expression overlays -->
+              <path class="eye-happy" d="M42 66 Q48 58 54 66" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path class="eye-star" d="M48 59 L50 63 L54 64 L50 65 L48 69 L46 65 L42 64 L46 63 Z" fill="#f59e0b"/>
+            </g>
+
+            <!-- Right Eye -->
+            <g class="dala-eye dala-eye-right">
+              <ellipse class="eye-pupil" cx="72" cy="64" rx="5" ry="6" fill="#38bdf8"/>
+              <circle class="eye-shine" cx="70" cy="62" r="2" fill="#ffffff"/>
+              <!-- Expression overlays -->
+              <path class="eye-happy" d="M66 66 Q72 58 78 66" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path class="eye-star" d="M72 59 L74 63 L78 64 L74 65 L72 69 L70 65 L66 64 L70 63 Z" fill="#f59e0b"/>
+            </g>
+
+            <!-- Alert / Exclamation mark for warning state -->
+            <g class="dala-alert-mark">
+              <circle cx="60" cy="64" r="10" fill="#ef4444" opacity="0.2"/>
+              <text x="60" y="69" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-weight="900" font-size="14">!</text>
+            </g>
+          </g>
+
+          <!-- Cyber Visor Frequency Mouth / Indicator -->
+          <path class="dala-mouth-smile" d="M52 74 Q60 78 68 74" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+          <!-- Lineage Node Badges Orbiting Under Head -->
+          <g class="dala-satellites">
+            <circle cx="28" cy="95" r="4.5" fill="#10b981" filter="url(#dala-glow)"/>
+            <circle cx="92" cy="95" r="4.5" fill="#f59e0b" filter="url(#dala-glow)"/>
+            <path d="M28 95 Q60 106 92 95" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="3,3" fill="none" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Detached Right Pointing / Waving Hand -->
+      <div class="dala-hand dala-hand-right">
+        <svg viewBox="0 0 28 28" width="28" height="28">
+          <ellipse cx="14" cy="14" rx="10" ry="10" fill="url(#dala-grad-hand)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))" />
+          <ellipse cx="14" cy="14" rx="7" ry="7" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2" />
+        </svg>
+      </div>
+
+      <!-- Shadow ground ellipse below character -->
+      <div class="dala-ground-shadow"></div>
+    </div>
+
+    <!-- Contextual Speech Bubble Card -->
+    <div id="dala-speech-bubble" class="dala-speech-bubble" role="dialog" aria-live="polite">
+      
+      <!-- Speech Tail / Pointer Indicator -->
+      <div class="dala-bubble-tail"></div>
+
+      <!-- Top Bar: Avatar, Mood Tag, Step Counter & Close -->
+      <div class="dala-bubble-header">
+        <div class="dala-bubble-badge-group">
+          <span class="dala-brand-tag">
+            <span class="dala-sparkle">✦</span> DaLa Guide
+          </span>
+          <span id="dala-mood-badge" class="dala-mood-badge">👋 Welcome</span>
+        </div>
+        <div class="dala-bubble-meta">
+          <span class="dala-drag-badge" title="Drag to move freely anywhere on screen">⠿ Drag</span>
+          <span id="dala-step-badge" class="dala-step-badge">1 / 13</span>
+          <button id="dala-btn-minimize" class="dala-btn-icon" title="Minimize / Expand Dialogue" aria-label="Minimize DaLa">─</button>
+        </div>
+      </div>
+
+      <!-- Message Content -->
+      <div class="dala-bubble-content">
+        <h4 id="dala-bubble-title" class="dala-bubble-title">The Monday Outage Incident</h4>
+        <p id="dala-bubble-message" class="dala-bubble-message">
+          Hey! I'm DaLa 👋 Let's investigate why the executive revenue dashboard broke.
+        </p>
+        
+        <!-- Reactive Action / Waiting HUD -->
+        <div id="dala-action-hud" class="dala-action-hud">
+          <span class="dala-hud-pulse"></span>
+          <span id="dala-action-text" class="dala-action-text">Review the incident report and squad chat cards.</span>
+        </div>
+      </div>
+
+      <!-- Interactive Controls -->
+      <div class="dala-bubble-footer">
+        <button id="dala-btn-skip" class="dala-btn-secondary" title="Exit the guided investigation">
+          Skip Tour
+        </button>
+        <div class="dala-nav-btns">
+          <button id="dala-btn-prev" class="dala-btn-secondary" title="Previous stop">
+            ◀ Back
+          </button>
+          <button id="dala-btn-next" class="dala-btn-primary" title="Next stop">
+            <span>Next</span> ▶
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Re-open Tour Floating Pill (appears if tour is skipped or minimized) -->
+  <button id="dala-reopen-pill" class="dala-reopen-pill" title="Resume tour with DaLa" style="display:none;">
+    <span>🕵️‍♂️</span> <strong>Guide Me</strong>
+  </button>
 
   <!-- App Script -->
   <script src="app.js"></script>
