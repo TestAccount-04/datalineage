@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LineageForge | Enterprise Data Lineage & Dependency Platform</title>
+  <meta name="description" content="Interactive enterprise data lineage and dependency platform. Trace data flow across source code, metadata catalogs, and runtime events.">
+  
+  <!-- Google Fonts: Outfit & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="top-nav">
+    <a href="#" class="brand">
+      <img src="assets/logo.svg" alt="LineageForge Logo" class="brand-logo-img">
+      <span>LineageForge</span>
+      <span class="brand-badge">Enterprise v1.0</span>
+    </a>
+
+    <!-- Dual Mode Switcher -->
+    <div class="mode-switcher" role="tablist">
+      <button id="btn-mode-story" class="mode-btn active" role="tab" aria-selected="true">
+        <span>🕵️</span> Story Mode (Investigation)
+      </button>
+      <button id="btn-mode-detailed" class="mode-btn" role="tab" aria-selected="false">
+        <span>🔬</span> Detailed Blueprint
+      </button>
+    </div>
+
+    <div class="nav-actions">
+      <a href="detailed_overview.md" class="nav-link" title="Raw Markdown Documentation">
+        <span>📄</span> Markdown Doc
+      </a>
+      <a href="https://github.com/TestAccount-04/datalineage.git" target="_blank" class="nav-link" rel="noopener">
+        <span>⭐</span> GitHub Repo
+      </a>
+    </div>
+  </header>
+
+  <!-- Interactive Case Status Bar (Story Mode) -->
+  <div id="case-status-bar" class="case-status-bar">
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <span style="color:#2563eb; font-weight:700;">CASE #2026-DL:</span>
+      <span style="color:#475569;">The Mystery of the Broken Revenue KPI</span>
+    </div>
+    <div class="clue-meter-wrapper">
+      <span id="clue-count-text" style="color:#0f172a; font-weight:600; font-size:0.8rem;">0/3 Clues Collected (0%)</span>
+      <div class="clue-progress-bar">
+        <div id="clue-progress-fill" class="clue-progress-fill"></div>
+      </div>
+    </div>
+    <div style="font-size:0.75rem; color:#059669; font-weight:700;">🟢 INVESTIGATION ACTIVE</div>
+  </div>
+
+  <main class="container">
+
+    <!-- =========================================================================
+         VIEW 1: INTERACTIVE STORY MODE
+         ========================================================================= -->
+    <div id="view-story" class="view-panel active">
+      
+      <!-- Hero Banner -->
+      <section class="hero-card">
+        <div class="hero-tag">Interactive Case File • Enterprise Architecture</div>
+        <h1 class="hero-title">Solving the Enterprise Data Mystery</h1>
+        <p class="hero-subtitle">
+          Follow the forensic trail across 20 enterprise technologies. Gather clues from source code, database catalogs, and runtime events to solve why a single line of Java broke an executive dashboard—and build the engine that prevents it forever.
+        </p>
+        <img src="assets/platform_vision_banner.png" alt="Platform Vision Banner" style="width:100%; border-radius:12px; border:1px solid #e2e8f0; margin-top:1rem; box-shadow:0 10px 25px rgba(0,0,0,0.08);">
+      </section>
+
+      <!-- Act 1: The Crime Scene -->
+      <article class="act-card">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act I • The Incident</div>
+            <h2 class="act-title">The Monday Morning Crime Scene</h2>
+          </div>
+          <span style="background:#fee2e2; color:#dc2626; border:1px solid #fecaca; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.8rem; font-weight:700;">OUTAGE AT 09:00 AM</span>
+        </div>
+        <p class="doc-text">
+          It's Monday morning. The CFO opens the executive dashboard to prepare for the board meeting, but the primary revenue KPI card displays a catastrophic error:
+        </p>
+        
+        <div class="terminal-alert">
+          <div class="terminal-header">
+            <span>🚨 SYSTEM OUTAGE • HTTP 500 INTERNAL SERVER ERROR</span>
+            <span>PROD-CLUSTER-01</span>
+          </div>
+          <div class="terminal-code">
+            org.postgresql.util.PSQLException: ERROR: column "credit_score" does not exist in table "customers"<br>
+            at com.corp.risk.RiskService.calculateScore(RiskService.java:114)<br>
+            at com.corp.pipeline.RiskEnricherJob.execute(batch_risk_enricher.py:42)<br>
+            at snowflake.dbt.daily_risk_summary.run(dbt_model.sql:18)<br>
+            <strong>FATAL: Downstream Power BI Dashboard 'Executive Risk KPI' failed to refresh.</strong>
+          </div>
+        </div>
+
+        <p class="doc-text">
+          <strong>The Paradox:</strong> A software engineer renamed a variable in a single Java method on Friday afternoon. How could a 1-line code tweak in a repo crash an executive dashboard 4 systems away? <strong>Because nobody has the complete map.</strong>
+        </p>
+      </article>
+
+      <!-- Interactive Node & Edge Lineage Graph Explorer -->
+      <section class="graph-canvas-card">
+        <div class="graph-canvas-header">
+          <div>
+            <div class="act-label">Interactive Lineage Fabric</div>
+            <h2 style="font-family:var(--font-heading); font-size:1.6rem; font-weight:800; color:var(--text-main); margin-top:0.2rem;">
+              Live Node & Edge Lineage Graph
+            </h2>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">
+              Trace data flow from raw OLTP sources through code, pipelines, and warehouses to final executive KPI dashboards. Click any node to inspect upstream origin, downstream impact, and verified forensic proofs.
+            </p>
+          </div>
+
+          <div class="graph-controls">
+            <button id="btn-trace-flow" class="btn-graph-action active" title="Trace data packets flowing across the graph">
+              <span>▶</span> Trace Data Flow Animation
+            </button>
+            <button id="btn-show-cll" class="btn-graph-action" title="Highlight column-level transformation flow">
+              <span>⚡</span> Inspect Column Lineage
+            </button>
+            <button id="btn-simulate-break" class="btn-graph-action" title="Simulate Friday's breaking column drop outage">
+              <span>💥</span> Simulate Friday Outage
+            </button>
+            <button id="btn-reset-graph" class="btn-graph-action" title="Reset filters and animations">
+              <span>↺</span> Reset
+            </button>
+            <div style="display:flex; gap:0.25rem; background:#ffffff; border:1px solid var(--border-color); padding:0.2rem; border-radius:8px;">
+              <button class="btn-graph-action btn-filter-tier active" data-tier="all">All</button>
+              <button class="btn-graph-action btn-filter-tier" data-tier="table">Tables</button>
+              <button class="btn-graph-action btn-filter-tier" data-tier="code">Code</button>
+              <button class="btn-graph-action btn-filter-tier" data-tier="job">Jobs</button>
+              <button class="btn-graph-action btn-filter-tier" data-tier="bi">BI</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Stage Architectural Flow Indicators -->
+        <div class="canvas-stages-header">
+          <div class="stage-step"><span>🗄️</span> 1. Source Tables</div>
+          <div class="stage-step"><span>💻</span> 2. Service Code</div>
+          <div class="stage-step"><span>🔄</span> 3. ETL Pipeline</div>
+          <div class="stage-step"><span>❄️</span> 4. Data Warehouse</div>
+          <div class="stage-step"><span>📊</span> 5. Final Lineage (KPI)</div>
+        </div>
+
+        <!-- Interactive Deterministic SVG Canvas Viewport -->
+        <div id="graph-viewport" class="graph-viewport">
+          <svg id="lineage-svg-canvas" viewBox="0 0 1260 410"></svg>
+        </div>
+
+        <!-- Node Inspector Drawer -->
+        <div id="node-inspector" class="node-inspector-drawer">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+            <div>
+              <h3 id="insp-name" style="font-family:var(--font-heading); font-size:1.3rem; font-weight:800; color:var(--text-main);">Selected Node</h3>
+              <div id="insp-type" style="font-size:0.85rem; color:var(--blue-primary); font-weight:600; margin-top:0.2rem;">Technology</div>
+            </div>
+            <span id="insp-confidence" class="badge-confirmed">98% Verified</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem; font-size:0.85rem;">
+            <div>
+              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Owner / Squad</div>
+              <div id="insp-owner" style="color:var(--text-muted);">Platform Team</div>
+              
+              <div style="font-weight:700; color:var(--text-main); margin-top:0.75rem; margin-bottom:0.25rem;">Physical Location</div>
+              <code id="insp-location" style="font-family:var(--font-mono); font-size:0.8rem; background:#ffffff; padding:0.2rem 0.5rem; border-radius:4px; border:1px solid #e2e8f0; color:#2563eb;">repo/path</code>
+            </div>
+
+            <div>
+              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">◄ Direct Upstream Origin</div>
+              <div id="insp-upstream" style="color:#0284c7; font-weight:600; margin-bottom:0.75rem;">None</div>
+
+              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">► Direct Downstream Consumer</div>
+              <div id="insp-downstream" style="color:#7c3aed; font-weight:600;">None</div>
+            </div>
+
+            <div>
+              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Key Columns / Attributes</div>
+              <ul id="insp-columns" style="color:var(--text-muted); padding-left:1.2rem; line-height:1.6;"></ul>
+            </div>
+
+            <div style="grid-column:1 / -1;">
+              <div style="font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Supporting Forensic Proof (Evidence Plane)</div>
+              <div id="insp-evidence" style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid var(--emerald-success); padding:0.6rem 0.85rem; border-radius:4px; font-family:var(--font-mono); font-size:0.8rem; color:#047857;">
+                Verified proof description
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Act 2: Collecting the Clues -->
+      <article class="act-card">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act II • Evidence Gathering</div>
+            <h2 class="act-title">Gather the Three Forensic Clues</h2>
+          </div>
+          <span style="color:var(--blue-primary); font-size:0.85rem; font-weight:600;">Click each card to collect and verify</span>
+        </div>
+        <p class="doc-text">
+          Traditional tools fail because Git only sees code, catalogs only see table names, and AI models hallucinate. To build an undeniable proof fabric, we collect evidence across <strong>3 independent planes</strong>:
+        </p>
+
+        <div class="clue-grid">
+          <!-- Clue 1: Static -->
+          <div class="clue-card" id="card-clue-static">
+            <div>
+              <span class="clue-badge">Clue #1 • Static Plane</span>
+              <h3 class="clue-title">Code Breadcrumbs</h3>
+              <p class="clue-desc">Parsed from Git repos without running code. Tree-sitter & SQLGlot reveal what code <i>could</i> do.</p>
+              <div class="clue-snippet">
+                // RiskService.java:112<br>
+                SELECT id, credit_score FROM customers<br>
+                AST: Tree-sitter + SQLGlot Parser
+              </div>
+            </div>
+            <button class="btn-collect" data-clue="static" id="btn-clue-static">Inspect & Collect Clue #1</button>
+          </div>
+
+          <!-- Clue 2: Metadata -->
+          <div class="clue-card" id="card-clue-metadata">
+            <div>
+              <span class="clue-badge">Clue #2 • Metadata Plane</span>
+              <h3 class="clue-title">Catalog Fingerprints</h3>
+              <p class="clue-desc">Extracted from database schemas & dbt manifests. Proves table definitions and column ownership.</p>
+              <div class="clue-snippet">
+                // dbt manifest.json<br>
+                model: daily_risk_summary<br>
+                depends_on: [risk_enriched_orders]
+              </div>
+            </div>
+            <button class="btn-collect" data-clue="metadata" id="btn-clue-metadata">Query & Collect Clue #2</button>
+          </div>
+
+          <!-- Clue 3: Runtime -->
+          <div class="clue-card" id="card-clue-runtime">
+            <div>
+              <span class="clue-badge">Clue #3 • Runtime Plane</span>
+              <h3 class="clue-title">Runtime Eyewitness</h3>
+              <p class="clue-desc">Observed from live executions. OpenLineage events & query logs prove what <i>actually ran</i>.</p>
+              <div class="clue-snippet">
+                // OpenLineage RunFacet #8912<br>
+                input: dataset://postgres/customers<br>
+                timestamp: 2026-10-10 08:00 UTC
+              </div>
+            </div>
+            <button class="btn-collect" data-clue="runtime" id="btn-clue-runtime">Analyze & Collect Clue #3</button>
+          </div>
+        </div>
+
+        <!-- Evidence Model Infographic -->
+        <div style="margin-top:2rem;">
+          <h4 style="font-family:var(--font-heading); color:var(--text-main); margin-bottom:0.75rem;">Forensic Convergence: The 3-Plane Evidence Card</h4>
+          <img src="assets/modern_evidence_model.png" alt="Evidence Model" style="width:100%; border-radius:12px; border:1px solid #e2e8f0; box-shadow:var(--shadow-card);">
+        </div>
+      </article>
+
+      <!-- Act 3: Solving Identity Doppelgangers -->
+      <article class="act-card" id="deduction-unlock-card" style="display:none;">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act III • The Breakthrough</div>
+            <h2 class="act-title">Solving the Doppelgänger Identity Riddle</h2>
+          </div>
+          <span style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0; padding:0.25rem 0.75rem; border-radius:999px; font-size:0.8rem; font-weight:700;">UNLOCKED 🔓</span>
+        </div>
+        <p class="doc-text">
+          All 3 clues are synced! But there is a trap: We found 4 different tables named <code>CUSTOMERS</code> across the enterprise. If we merge them by name, our lineage turns into a tangled lie.
+        </p>
+
+        <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:12px; padding:1.5rem; margin:1.5rem 0;">
+          <div id="identity-table-list" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem;">
+            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
+              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+              <span style="color:#d97706; font-weight:600;">Environment: DEV (Mock Data)</span>
+            </div>
+            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
+              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+              <span style="color:#d97706; font-weight:600;">Environment: STAGING (Test Data)</span>
+            </div>
+            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
+              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+              <span style="color:#059669; font-weight:600;">Environment: PROD (Postgres US-East)</span>
+            </div>
+            <div style="padding:0.75rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between;">
+              <span>❌ Ambiguous Name: <code>CUSTOMERS</code></span>
+              <span style="color:#2563eb; font-weight:600;">Environment: PROD (Snowflake Analytics)</span>
+            </div>
+          </div>
+
+          <div id="identity-resolved-list" style="display:none; grid-template-columns:1fr; gap:0.75rem; margin-bottom:1.25rem;">
+            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+              ✅ dataset://postgres/tenant_us/dev/cluster_01/public/customers
+            </div>
+            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+              ✅ dataset://postgres/tenant_us/staging/cluster_01/public/customers
+            </div>
+            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+              ✅ dataset://postgres/tenant_us/prod/cluster_02/core/customers
+            </div>
+            <div style="padding:0.75rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-family:var(--font-mono); font-size:0.8rem; color:#065f46;">
+              ✅ dataset://snowflake/corp_risk/prod/dw_finance/analytics/customers
+            </div>
+          </div>
+
+          <button id="btn-resolve-identities" class="btn-collect" style="max-width:360px;">⚡ Resolve into Canonical 6-Tuple URIs</button>
+        </div>
+      </article>
+
+      <!-- Act 4: The Blast Radius Simulator -->
+      <article class="act-card">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act IV • Prevention Engine</div>
+            <h2 class="act-title">The Blast Radius Simulator (Sandbox)</h2>
+          </div>
+          <span style="color:var(--amber-warning); font-size:0.85rem; font-weight:600;">Interactive Impact Testing</span>
+        </div>
+        <p class="doc-text">
+          How do we stop Monday morning outages before code is merged? Test a proposed change in our simulation engine to calculate the downstream blast radius:
+        </p>
+
+        <div class="sim-container">
+          <div class="sim-controls">
+            <select id="sim-scenario-select" class="sim-select" aria-label="Select schema change scenario">
+              <option value="drop_credit_score">Scenario 1: ALTER TABLE customers DROP COLUMN credit_score (The Monday Crash)</option>
+              <option value="rename_amount">Scenario 2: ALTER TABLE orders RENAME COLUMN amount TO total_amount</option>
+              <option value="add_audit_col">Scenario 3: ALTER TABLE customers ADD COLUMN audit_timestamp (Additive Safe Change)</option>
+            </select>
+            <button id="btn-run-simulation" class="btn-simulate">Simulate Blast Radius ⚡</button>
+          </div>
+
+          <!-- Dynamic Output Container -->
+          <div id="sim-output-container" class="sim-output">
+            <div class="sim-alert-banner">
+              <strong>Simulated Action:</strong> <code id="sim-action-text"></code><br>
+              <strong>Severity:</strong> <span id="sim-severity-badge" style="color:#b91c1c; font-weight:700;"></span>
+            </div>
+
+            <div style="margin-bottom:1rem; font-weight:700; color:var(--text-main);">Affected Downstream Nodes Traversed:</div>
+            <div id="sim-nodes-grid" class="blast-nodes-grid"></div>
+
+            <div id="sim-gate-banner" style="margin-top:1.5rem; padding:1rem; background:#ffffff; border:1px solid #fecaca; border-radius:8px; font-family:var(--font-mono); font-size:0.85rem; color:#b91c1c;"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Act 5: The Case Solved & Final Lineage Output -->
+      <article class="act-card" id="dossier-unlock-card">
+        <div class="act-header">
+          <div>
+            <div class="act-label">Act V • The Output Dossier</div>
+            <h2 class="act-title">The End Result: Complete Enterprise Lineage DAG</h2>
+          </div>
+          <span class="badge-confirmed">CONFIRMED EVIDENCE FABRIC</span>
+        </div>
+        <p class="doc-text">
+          <strong>The Mystery is Solved.</strong> Below is what we have as the final end-to-end lineage: A deterministic, verified chain showing exactly how raw operational data travels across 5 distinct system tiers to form executive business metrics—with zero blind spots.
+        </p>
+
+        <!-- Visual End-to-End Lineage Flow Cards -->
+        <div class="lineage-end-flow-grid">
+          <div class="lineage-flow-node-card">
+            <div class="flow-step-num">Step 1 • Root Source</div>
+            <div class="flow-node-name">🗄️ orders</div>
+            <div class="flow-node-meta">Postgres OLTP • <code>public.orders</code></div>
+            <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:0.35rem;">✓ Verified Schema</div>
+          </div>
+
+          <div class="lineage-flow-node-card">
+            <div class="flow-step-num">Step 1 • Root Source</div>
+            <div class="flow-node-name">🗄️ customers</div>
+            <div class="flow-node-meta">Postgres OLTP • <code>public.customers</code></div>
+            <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:0.35rem;">✓ Verified Schema</div>
+          </div>
+
+          <div class="lineage-flow-node-card">
+            <div class="flow-step-num">Step 2 • Code Service</div>
+            <div class="flow-node-name">💻 RiskService.java</div>
+            <div class="flow-node-meta">Spring Boot • <code>calculateScore()</code></div>
+            <div style="font-size:0.75rem; color:#7c3aed; font-weight:700; margin-top:0.35rem;">✓ Tree-sitter AST</div>
+          </div>
+
+          <div class="lineage-flow-node-card">
+            <div class="flow-step-num">Step 3 • Pipeline</div>
+            <div class="flow-node-name">🔄 batch_risk_enricher.py</div>
+            <div class="flow-node-meta">Airflow / Spark • DAG #8912</div>
+            <div style="font-size:0.75rem; color:#0284c7; font-weight:700; margin-top:0.35rem;">✓ OpenLineage Run</div>
+          </div>
+
+          <div class="lineage-flow-node-card">
+            <div class="flow-step-num">Step 4 • Warehouse</div>
+            <div class="flow-node-name">❄️ daily_risk_summary</div>
+            <div class="flow-node-meta">Snowflake • dbt core mart</div>
+            <div style="font-size:0.75rem; color:#4338ca; font-weight:700; margin-top:0.35rem;">✓ dbt Manifest Graph</div>
+          </div>
+
+          <div class="lineage-flow-node-card target">
+            <div class="flow-step-num" style="color:#b45309;">Step 5 • End Lineage</div>
+            <div class="flow-node-name">📊 Executive Revenue KPI</div>
+            <div class="flow-node-meta">Power BI • Finance Dashboard</div>
+            <div style="font-size:0.75rem; color:#059669; font-weight:800; margin-top:0.35rem;">★ Final Consumer Target</div>
+          </div>
+        </div>
+
+        <!-- Column-Level Lineage (CLL) Transformation Table -->
+        <div style="margin-top:1.75rem;">
+          <h4 style="font-family:var(--font-heading); color:var(--text-main); font-size:1.1rem; margin-bottom:0.6rem;">
+            ⚡ End-to-End Column Transformation Mapping (CLL)
+          </h4>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Source Column</th>
+                  <th>Transformation Logic</th>
+                  <th>Target Column</th>
+                  <th>Verification Engine</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>orders.amount</code> (DECIMAL)</td>
+                  <td>Direct Read: <code>calculateScore(amount, credit_score)</code></td>
+                  <td><code>risk_enriched_orders.amount</code></td>
+                  <td>Tree-sitter Java AST</td>
+                </tr>
+                <tr>
+                  <td><code>customers.credit_score</code> (INT)</td>
+                  <td>Math Factor: <code>(credit_score / 850.0) * multiplier</code></td>
+                  <td><code>risk_enriched_orders.risk_factor</code></td>
+                  <td>OpenLineage Output Schema</td>
+                </tr>
+                <tr>
+                  <td><code>risk_enriched_orders.risk_factor</code></td>
+                  <td>SQL Aggregation: <code>SUM(amount * risk_factor) AS risk_score</code></td>
+                  <td><code>daily_risk_summary.risk_score</code></td>
+                  <td>SQLGlot CTE Analyzer</td>
+                </tr>
+                <tr>
+                  <td><code>daily_risk_summary.risk_score</code></td>
+                  <td>BI Visual Filter: <code>Aggregate Loss Expectancy</code></td>
+                  <td><code>Executive Revenue KPI Dashboard</code></td>
+                  <td>Power BI Binding API</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- The Master Evidence Dossier Card -->
+        <div class="dossier-card">
+          <div class="dossier-header">
+            <div>
+              <div style="color:var(--blue-primary); font-size:1.15rem; font-weight:800;">TARGET ASSET: dataset://snowflake/corp_risk/prod/dw_finance/analytics/daily_risk_summary</div>
+              <div style="color:var(--text-muted); font-size:0.85rem; margin-top:0.25rem;">Owner: Finance Data Squad • Freshness: 12m ago • Schema Drift: 0%</div>
+            </div>
+            <span class="badge-confirmed">CONFIDENCE: 98% (STRONGLY VERIFIED)</span>
+          </div>
+
+          <div class="dossier-grid">
+            <div class="dossier-section">
+              <div class="dossier-sec-title">◄ Upstream Lineage Provenance (How It Got Here)</div>
+              <div style="font-size:0.85rem; color:var(--text-main); line-height:1.8;">
+                • <strong>orders</strong> (Postgres OLTP)<br>
+                &nbsp;&nbsp;└── Proof: <code>RiskService.java:112</code> (JDBC Query)<br>
+                • <strong>customers</strong> (Postgres OLTP)<br>
+                &nbsp;&nbsp;└── Proof: <code>RiskService.java:114</code> (SELECT credit_score)<br>
+                • <strong>RiskService.calculateScore()</strong><br>
+                &nbsp;&nbsp;└── Proof: Tree-sitter AST (Method declared in Git sha_8f4bc)<br>
+                • <strong>batch_risk_enricher.py</strong><br>
+                &nbsp;&nbsp;└── Proof: OpenLineage RunFacet event ID #8912
+              </div>
+            </div>
+
+            <div class="dossier-section">
+              <div class="dossier-sec-title">► Downstream Impact Blast Radius (Who Consumes It)</div>
+              <div style="font-size:0.85rem; color:var(--text-main); line-height:1.8;">
+                • <strong>Executive Revenue KPI Dashboard</strong> (Power BI)<br>
+                &nbsp;&nbsp;└── Owner: VP Finance • Metric: Daily Revenue at Risk<br>
+                • <strong>Credit Limit ML Inference Pipeline</strong> (PyTorch)<br>
+                &nbsp;&nbsp;└── Feature Store View: <code>customer_risk_v2</code><br>
+                • <strong>Daily Regulatory Capital Compliance Report</strong><br>
+                &nbsp;&nbsp;└── External Regulator: Basel III Capital Adequacy Report
+              </div>
+            </div>
+
+            <div class="dossier-section" style="grid-column: 1 / -1;">
+              <div class="dossier-sec-title">⚡ Granular Column AST Proof Formula</div>
+              <div style="font-size:0.85rem; color:#0369a1; background:#ffffff; padding:0.85rem; border-radius:6px; border:1px solid #e0f2fe; line-height:1.6;">
+                <code>daily_risk_summary.risk_score</code> <span style="color:#b45309; font-weight:700;">&lt;─── SUM(orders.amount) * customers.credit_multiplier</span><br>
+                <span style="font-size:0.75rem; color:var(--text-dim);">Verified via SQLGlot 23.0 AST • Dialect: Snowflake • Scopes: 2 nested Common Table Expressions (CTEs)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lineage Export & Cypher Controls -->
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem; justify-content:center;">
+          <button id="btn-export-lineage-json" class="btn-graph-action" style="background:var(--blue-subtle); color:var(--blue-primary); border-color:var(--blue-primary); font-weight:700;">
+            <span>📥</span> Download Canonical Lineage JSON
+          </button>
+          <button id="btn-view-cypher" class="btn-graph-action" style="background:#ffffff; color:var(--text-main); font-weight:700;">
+            <span>🔍</span> View Neo4j Cypher Traversal
+          </button>
+        </div>
+
+        <!-- Expandable Cypher Modal Card -->
+        <div id="cypher-modal" style="display:none; background:#ffffff; border:1px solid var(--border-color); border-radius:10px; padding:1.25rem; margin-top:1.25rem; box-shadow:var(--shadow-subtle);">
+          <div style="font-weight:700; color:var(--blue-primary); font-size:0.9rem; margin-bottom:0.5rem; font-family:var(--font-mono);">
+            // Neo4j Multi-Hop Graph Traversal Query
+          </div>
+          <pre style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:0.85rem; font-family:var(--font-mono); font-size:0.8rem; color:#0f172a; overflow-x:auto;">
+MATCH path = (src:Table {name: 'customers'})-[:READS_FROM|TRANSFORMS|WRITES_TO|SERVES*1..6]->(dst:Dashboard {name: 'Executive Revenue KPI'})
+WHERE src.env = 'PROD' AND dst.env = 'PROD'
+RETURN path, [n IN nodes(path) | n.name] AS asset_chain, [r IN relationships(path) | type(r)] AS edge_types;
+          </pre>
+        </div>
+
+        <div style="margin-top:2.5rem; text-align:center;">
+          <p class="doc-text" style="margin-bottom:1rem;">Ready to inspect the deep engineering specifications and architecture blueprint?</p>
+          <button id="btn-goto-detailed" class="btn-collect" style="max-width:320px; margin:0 auto;" onclick="document.getElementById('btn-mode-detailed').click();">Switch to Detailed Mode 🔬</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- =========================================================================
+         VIEW 2: DETAILED TECHNICAL BLUEPRINT MODE
+         ========================================================================= -->
+    <div id="view-detailed" class="view-panel">
+      
+      <div class="detailed-layout">
+        
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="doc-sidebar">
+          <div class="sidebar-title">Architecture Sections</div>
+          <ul class="sidebar-menu">
+            <li><a href="#sec-overview" class="sidebar-link active">1. Executive Summary & Stack</a></li>
+            <li><a href="#sec-6layers" class="sidebar-link">2. 6-Layer Architecture Blueprint</a></li>
+            <li><a href="#sec-3planes" class="sidebar-link">3. The 3 Evidence Planes</a></li>
+            <li><a href="#sec-5levels" class="sidebar-link">4. The 5 Levels of Lineage</a></li>
+            <li><a href="#sec-schema" class="sidebar-link">5. Canonical Graph Schema (ERD)</a></li>
+            <li><a href="#sec-challenges" class="sidebar-link">6. 12 Engineering Challenges</a></li>
+            <li><a href="#sec-tools" class="sidebar-link">7. Tool Evaluation Matrix</a></li>
+            <li><a href="#sec-pipeline" class="sidebar-link">8. Extraction Pipeline & APIs</a></li>
+            <li><a href="#sec-roadmap" class="sidebar-link">9. 90-Day Implementation Roadmap</a></li>
+            <li><a href="#sec-risks" class="sidebar-link">10. Risk Management Matrix</a></li>
+            <li><a href="#sec-glossary" class="sidebar-link">11. Comprehensive Glossary</a></li>
+          </ul>
+        </aside>
+
+        <!-- Detailed Content Container -->
+        <div class="doc-content">
+          
+          <!-- Section 1 -->
+          <section id="sec-overview" class="doc-section">
+            <h2 class="doc-title">1. Executive Summary & Core Stack</h2>
+            <p class="doc-text">
+              Enterprises rarely operate a single technology stack. A typical estate contains Java and Python microservices, SQL databases, stored procedures, ETL orchestrators, Kafka topics, cloud warehouses, and BI dashboards.
+            </p>
+            <p class="doc-text">
+              Rather than relying on a single tool, catalog, or nondeterministic LLM, LineageForge implements an <strong>evidence-backed lineage fabric</strong> combining static, metadata, and runtime evidence into a unified internal model.
+            </p>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Capability</th>
+                    <th>Recommended Technology</th>
+                    <th>Architectural Rationale</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Code Parsing</strong></td>
+                    <td>Tree-sitter + Language Adapters</td>
+                    <td>Multi-language concrete syntax trees; error-tolerant deterministic parsing.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SQL Parsing</strong></td>
+                    <td>SQLGlot</td>
+                    <td>20+ SQL dialects supported in Python with CTE scope traversal.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Runtime Events</strong></td>
+                    <td>OpenLineage</td>
+                    <td>Common event standard for Spark, Airflow, and Flink execution telemetry.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Graph Store</strong></td>
+                    <td>Neo4j</td>
+                    <td>Property graph optimized for 8+ hop traversals and Cypher queries.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>State Store</strong></td>
+                    <td>PostgreSQL</td>
+                    <td>ACID relational state for tenancy, connector watermarks, and audit.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>UI Canvas</strong></td>
+                    <td>React Flow</td>
+                    <td>High-performance interactive node-edge canvas with progressive disclosure.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 2 -->
+          <section id="sec-6layers" class="doc-section">
+            <h2 class="doc-title">2. 6-Layer Architecture Blueprint</h2>
+            <p class="doc-text">
+              Data moves from enterprise sources to consumption through six sequential layers:
+            </p>
+            
+            <!-- Native Frontend 6-Layer Architecture Fabric -->
+            <div class="native-arch-fabric">
+              
+              <!-- Tier 1: Sources -->
+              <div class="arch-tier-box tier-sources">
+                <div class="arch-tier-header">
+                  <div class="arch-tier-title"><span>📁</span> Layer 1 • Enterprise Data Sources</div>
+                  <span class="arch-tier-pill" style="background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">Polyglot Systems</span>
+                </div>
+                <div class="arch-tier-grid">
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>💻</span> Git Repositories</div>
+                    <div class="arch-card-desc">Java Spring Boot, Python scripts, Scala microservices, SQL scripts.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🗄️</span> Relational & DW Databases</div>
+                    <div class="arch-card-desc">PostgreSQL, Oracle, Snowflake schemas, BigQuery datasets.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>⚡</span> Event Streaming</div>
+                    <div class="arch-card-desc">Apache Kafka topics, Confluent Schema Registry Avro payloads.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🔄</span> Pipeline Orchestration</div>
+                    <div class="arch-card-desc">Airflow DAG schedules, dbt Core models, Databricks Spark jobs.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Connector 1 -> 2 -->
+              <div class="arch-flow-divider">
+                <div class="arch-flow-line"></div>
+                <span>▼ INGESTION STREAM (METADATA & EVENT AGENTS)</span>
+                <div class="arch-flow-line"></div>
+              </div>
+
+              <!-- Tier 2: Parsing Core -->
+              <div class="arch-tier-box tier-parsing">
+                <div class="arch-tier-header">
+                  <div class="arch-tier-title"><span>⚙️</span> Layer 2 • Ingestion & Parsing Core</div>
+                  <span class="arch-tier-pill" style="background:#f5f3ff; color:#6d28d9; border:1px solid #ddd6fe;">AST & Identity Engine</span>
+                </div>
+                <div class="arch-tier-grid">
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>📥</span> Multi-Plane Ingestion</div>
+                    <div class="arch-card-desc">OpenLineage HTTP event receivers, DB catalog crawlers, Git webhooks.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🌳</span> Tree-sitter + SQLGlot</div>
+                    <div class="arch-card-desc">Deterministic AST parsing for Java/Python and backward CTE SQL scope tracing.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🏷️</span> Canonical Identity Resolver</div>
+                    <div class="arch-card-desc">6-tuple URI hashing eliminates environment doppelgängers.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Connector 2 -> 3 -->
+              <div class="arch-flow-divider">
+                <div class="arch-flow-line"></div>
+                <span>▼ GRAPH MATERIALIZATION & ACID PERSISTENCE</span>
+                <div class="arch-flow-line"></div>
+              </div>
+
+              <!-- Tier 3: Storage Tier -->
+              <div class="arch-tier-box tier-storage">
+                <div class="arch-tier-header">
+                  <div class="arch-tier-title"><span>🗃️</span> Layer 3 • Lineage Graph Storage Tier</div>
+                  <span class="arch-tier-pill" style="background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;">Dual Property Store</span>
+                </div>
+                <div class="arch-tier-grid">
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🌐</span> Neo4j Graph Database</div>
+                    <div class="arch-card-desc">High-performance property graph optimized for 8+ hop Cypher traversals.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>💾</span> PostgreSQL State Store</div>
+                    <div class="arch-card-desc">Relational ACID storage for tenant isolation, connector watermarks, and audit.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Connector 3 -> 4 -->
+              <div class="arch-flow-divider">
+                <div class="arch-flow-line"></div>
+                <span>▼ PRODUCT APIS & CONSUMPTION INTERFACES</span>
+                <div class="arch-flow-line"></div>
+              </div>
+
+              <!-- Tier 4: Consumption -->
+              <div class="arch-tier-box tier-consumption">
+                <div class="arch-tier-header">
+                  <div class="arch-tier-title"><span>📊</span> Layer 4 • Product & Consumption Tier</div>
+                  <span class="arch-tier-pill" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a;">Actionable Insights</span>
+                </div>
+                <div class="arch-tier-grid">
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🖥️</span> Interactive Lineage Canvas</div>
+                    <div class="arch-card-desc">React Flow canvas with progressive disclosure and column-level drilldown.</div>
+                  </div>
+                  <div class="arch-card">
+                    <div class="arch-card-name"><span>🛡️</span> Automated Blast Radius API</div>
+                    <div class="arch-card-desc">CI/CD PR gate that detects breaking schema changes before merge.</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 3 -->
+          <section id="sec-3planes" class="doc-section">
+            <h2 class="doc-title">3. The 3 Evidence Planes</h2>
+            <p class="doc-text">
+              Every edge in the graph carries proof from one or more distinct evidence planes:
+            </p>
+            
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Evidence Plane</th>
+                    <th>Sources</th>
+                    <th>Key Strengths</th>
+                    <th>Inherent Limitations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Static Evidence</strong></td>
+                    <td>Git repositories, Java/Python code, dbt YAML, SQL files.</td>
+                    <td>Works pre-execution; catches rare disaster recovery paths.</td>
+                    <td>Cannot prove if conditional branches actually executed.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Metadata Evidence</strong></td>
+                    <td>DB Information Schemas, DataHub, OpenMetadata, Glue.</td>
+                    <td>Authoritative schema structures and column definitions.</td>
+                    <td>Stops at catalog boundary; misses internal code math.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Runtime Evidence</strong></td>
+                    <td>OpenLineage run events, query audit logs, OpenTelemetry traces.</td>
+                    <td>Proves what actually executed in production.</td>
+                    <td>Limited to active retention windows; misses unexecuted jobs.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 4 -->
+          <section id="sec-5levels" class="doc-section">
+            <h2 class="doc-title">4. The 5 Levels of Lineage</h2>
+            <p class="doc-text">
+              LineageForge supports unbroken zoom across five hierarchical tiers:
+            </p>
+
+            <!-- Native Frontend 5-Tier Hierarchical Zoom Stack -->
+            <div class="native-zoom-stack">
+              
+              <!-- Tier 1 -->
+              <div class="zoom-tier-row">
+                <div class="zoom-left">
+                  <div class="zoom-step-pill">L1</div>
+                  <div>
+                    <div class="zoom-name">🏢 Level 1: Enterprise Domain Tier</div>
+                    <div class="zoom-examples">Global Business Domains • e.g., Risk Management, Retail Banking, Wealth, Core Treasury</div>
+                  </div>
+                </div>
+                <div class="zoom-meta">Scope: Global Org Map</div>
+              </div>
+
+              <div class="zoom-connector">▼ HIERARCHICAL DRILLDOWN</div>
+
+              <!-- Tier 2 -->
+              <div class="zoom-tier-row">
+                <div class="zoom-left">
+                  <div class="zoom-step-pill" style="background:#f5f3ff; color:#7c3aed; border-color:#ddd6fe;">L2</div>
+                  <div>
+                    <div class="zoom-name">⚙️ Level 2: Application / Service Tier</div>
+                    <div class="zoom-examples">Services & Jobs • e.g., RiskService.java, batch_risk_enricher.py, Kafka Event Streams</div>
+                  </div>
+                </div>
+                <div class="zoom-meta">Scope: Microservices & DAGs</div>
+              </div>
+
+              <div class="zoom-connector">▼ HIERARCHICAL DRILLDOWN</div>
+
+              <!-- Tier 3 -->
+              <div class="zoom-tier-row">
+                <div class="zoom-left">
+                  <div class="zoom-step-pill" style="background:#ecfdf5; color:#059669; border-color:#a7f3d0;">L3</div>
+                  <div>
+                    <div class="zoom-name">🗄️ Level 3: Dataset / Physical Storage Tier</div>
+                    <div class="zoom-examples">Physical Storage • e.g., postgres.orders, snowflake.daily_risk_summary, s3://lake/risk/</div>
+                  </div>
+                </div>
+                <div class="zoom-meta">Scope: Tables, Topics & Lakes</div>
+              </div>
+
+              <div class="zoom-connector">▼ HIERARCHICAL DRILLDOWN</div>
+
+              <!-- Tier 4 -->
+              <div class="zoom-tier-row">
+                <div class="zoom-left">
+                  <div class="zoom-step-pill" style="background:#fffbeb; color:#d97706; border-color:#fde68a;">L4</div>
+                  <div>
+                    <div class="zoom-name">📋 Level 4: Column / Field Lineage Tier</div>
+                    <div class="zoom-examples">Field AST Math • e.g., risk_score = SUM(orders.amount) * customers.credit_multiplier</div>
+                  </div>
+                </div>
+                <div class="zoom-meta">Scope: Column Transformations</div>
+              </div>
+
+              <div class="zoom-connector">▼ HIERARCHICAL DRILLDOWN</div>
+
+              <!-- Tier 5 -->
+              <div class="zoom-tier-row">
+                <div class="zoom-left">
+                  <div class="zoom-step-pill" style="background:#fef2f2; color:#dc2626; border-color:#fecaca;">L5</div>
+                  <div>
+                    <div class="zoom-name">💻 Level 5: Code Symbols & Runtime Telemetry Tier</div>
+                    <div class="zoom-examples">Code Proofs • e.g., calculateScore() method AST, OpenLineage RunFacet event #8912</div>
+                  </div>
+                </div>
+                <div class="zoom-meta">Scope: Concrete AST & Telemetry</div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 5 -->
+          <section id="sec-schema" class="doc-section">
+            <h2 class="doc-title">5. Canonical Graph Schema (ERD)</h2>
+            <p class="doc-text">
+              The internal graph model is vendor-agnostic and enforces strict separation between data flow (<code>TRANSFORMS_TO</code>) and control scheduling (<code>DEPENDS_ON</code>):
+            </p>
+
+            <!-- Native Frontend Canonical ERD Property Graph Schema Canvas -->
+            <div class="native-erd-canvas">
+              
+              <!-- Cluster 1: Governance & Topology -->
+              <div class="erd-cluster">
+                <div class="erd-cluster-title">🏛️ 1. Governance & Systems</div>
+                
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>🏢</span> Organization / Domain</div>
+                  <div class="erd-entity-fields">Attributes: id, name, risk_tier, business_unit</div>
+                  <span class="erd-relation-badge">[:owns] ➔ System</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>💻</span> System / Application</div>
+                  <div class="erd-entity-fields">Attributes: app_code, tier, squad_owner</div>
+                  <span class="erd-relation-badge">[:contains] ➔ Repository</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>📁</span> Repository / File</div>
+                  <div class="erd-entity-fields">Attributes: git_url, branch, file_path, commit_sha</div>
+                  <span class="erd-relation-badge">[:declares] ➔ Code Symbol</span>
+                </div>
+              </div>
+
+              <!-- Cluster 2: Execution & Code -->
+              <div class="erd-cluster">
+                <div class="erd-cluster-title">⚙️ 2. Logic & Execution</div>
+                
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>⚙️</span> Code Symbol</div>
+                  <div class="erd-entity-fields">Type: Method, Function, SQL Statement, DDL</div>
+                  <span class="erd-relation-badge">[:READS_FROM / :WRITES_TO] ➔ Dataset</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>🔄</span> Pipeline / Job</div>
+                  <div class="erd-entity-fields">Platform: Airflow DAG, dbt Model, Spark Job</div>
+                  <span class="erd-relation-badge">[:triggers] ➔ Execution Run</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>⏱️</span> Execution Run</div>
+                  <div class="erd-entity-fields">Run: run_id, start_time, exit_code, facet_json</div>
+                  <span class="erd-relation-badge">[:OBSERVED_IN_RUN] ➔ Dataset</span>
+                </div>
+              </div>
+
+              <!-- Cluster 3: Physical Data Assets -->
+              <div class="erd-cluster">
+                <div class="erd-cluster-title">🗄️ 3. Data Assets & Schemas</div>
+                
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>🗄️</span> Dataset (Table / Topic)</div>
+                  <div class="erd-entity-fields">URI: 6-tuple canonical URI, storage_engine, env</div>
+                  <span class="erd-relation-badge">[:contains] ➔ Field</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>📋</span> Field / Column</div>
+                  <div class="erd-entity-fields">Attributes: name, data_type, nullable, pii_flag</div>
+                  <span class="erd-relation-badge">[:TRANSFORMS_TO] ➔ Field (CLL)</span>
+                </div>
+              </div>
+
+              <!-- Cluster 4: Downstream Consumers -->
+              <div class="erd-cluster">
+                <div class="erd-cluster-title">📈 4. Product Consumers</div>
+                
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>📊</span> BI Asset (Dashboard)</div>
+                  <div class="erd-entity-fields">Attributes: workspace, report_id, visual_tile, owner</div>
+                  <span class="erd-relation-badge">Dataset ➔ [:consumed_by]</span>
+                </div>
+
+                <div class="erd-entity-card">
+                  <div class="erd-entity-name"><span>🤖</span> ML Asset (Feature View)</div>
+                  <div class="erd-entity-fields">Attributes: feature_store, model_endpoint, version</div>
+                  <span class="erd-relation-badge">Dataset ➔ [:feeds_features]</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 6 -->
+          <section id="sec-challenges" class="doc-section">
+            <h2 class="doc-title">6. 12 Real-World Engineering Challenges & Solutions</h2>
+            <p class="doc-text">
+              The platform directly solves twelve fundamental enterprise challenges:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Challenge</th>
+                    <th>Core Engineering Obstacle</th>
+                    <th>Platform Solution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>6.1 Polyglot Code</strong></td>
+                    <td>Mixed Java, Python, Scala, and SQL.</td>
+                    <td>Tree-sitter AST queries with framework-specific I/O adapters.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.2 Complex SQL</strong></td>
+                    <td>Nested CTEs, window functions, and joins.</td>
+                    <td>SQLGlot backward CTE scope tracing down to physical tables.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.3 Stored Procedures</strong></td>
+                    <td>Logic hidden in Oracle PL/SQL or T-SQL.</td>
+                    <td>Read-only DDL catalog extraction + procedural DML analysis.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.4 ETL Orchestrators</strong></td>
+                    <td>Airflow task order $\neq$ data flow.</td>
+                    <td>OpenLineage dataset facets + dbt manifest.json integration.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.5 APIs & Kafka</strong></td>
+                    <td>Data jumps across HTTP or topic boundaries.</td>
+                    <td>OpenAPI specs and Kafka Schema Registry topic nodes.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.6 BI Semantic Layers</strong></td>
+                    <td>Calculated measures hidden in dashboards.</td>
+                    <td>Native BI metadata APIs extracting DAX/Calculated fields.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.7 Dynamic SQL</strong></td>
+                    <td>Runtime string-concatenated SQL queries.</td>
+                    <td>Tagged as Candidate/Unknown until query history proves execution.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.8 Identity Clashes</strong></td>
+                    <td>Identical table names across environments.</td>
+                    <td>Canonical 6-tuple URIs (<code>dataset://platform/tenant/env/cluster/db/schema/tbl</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.9 LLM Hallucinations</strong></td>
+                    <td>AI models invent plausible-looking links.</td>
+                    <td>Deterministic-first parsing; engine operates with LLMs disabled.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.10 Impact Analysis</strong></td>
+                    <td>Developers don't know what changes break.</td>
+                    <td>Forward Cypher graph traversal with bounded hop limits.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.11 Incremental Updates</strong></td>
+                    <td>Full graph rebuilds are unscalable.</td>
+                    <td>Git diff parsing re-evaluates only changed files and symbol neighbors.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>6.12 Enterprise Security</strong></td>
+                    <td>Code contains secrets and sensitive PII.</td>
+                    <td>Automated regex/entropy secret scrubbing prior to graph ingestion.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 7 -->
+          <section id="sec-tools" class="doc-section">
+            <h2 class="doc-title">7. Technology Stack & Evaluation Matrix</h2>
+            <p class="doc-text">
+              We carefully benchmarked the industry's open-source alternatives before selecting our core dependencies:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Selected Tool</th>
+                    <th>Evaluated Alternatives</th>
+                    <th>Architectural Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Code AST</strong></td>
+                    <td>Tree-sitter</td>
+                    <td>Language Native ASTs, GitNexus, LLMs</td>
+                    <td>Tree-sitter provides universal syntax parsing; LLM used only as helper.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SQL Engine</strong></td>
+                    <td>SQLGlot</td>
+                    <td>OpenLineage SQL, Regex</td>
+                    <td>SQLGlot provides dialect ASTs & scope resolution in Python. Regex rejected.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Graph Database</strong></td>
+                    <td>Neo4j</td>
+                    <td>PostgreSQL Recursive CTE, Apache AGE</td>
+                    <td>Neo4j Cypher handles 8+ hop queries in milliseconds.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>UI Explorer</strong></td>
+                    <td>React Flow</td>
+                    <td>Cytoscape.js, D3.js</td>
+                    <td>React Flow provides modern component canvas with expandable subgraphs.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 8 -->
+          <section id="sec-pipeline" class="doc-section">
+            <h2 class="doc-title">8. Extraction Pipeline & Core APIs</h2>
+            <p class="doc-text">
+              Connectors execute through a 10-stage sequential ingestion lifecycle:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>HTTP Route</th>
+                    <th>Purpose</th>
+                    <th>Response Output</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>GET /api/v1/assets/{id}</code></td>
+                    <td>Asset metadata & canonical ID</td>
+                    <td>Canonical 6-tuple URI, owner, and schemas.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /api/v1/assets/{id}/upstream</code></td>
+                    <td>Upstream provenance tree</td>
+                    <td>Source entities and transformations bounded by depth.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /api/v1/assets/{id}/downstream</code></td>
+                    <td>Downstream consumer tree</td>
+                    <td>Dependent jobs, models, and BI dashboards.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /api/v1/assets/{id}/column-lineage</code></td>
+                    <td>Field-level derivation math</td>
+                    <td>Source column AST mapping expressions.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /api/v1/impact</code></td>
+                    <td>Change blast radius calculation</td>
+                    <td>List of direct breaking and transitive affected assets.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /api/v1/evidence/{edge_id}</code></td>
+                    <td>Auditable physical proof</td>
+                    <td>Git commit hash, file lines, query ID, and confidence score.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 9 -->
+          <section id="sec-roadmap" class="doc-section">
+            <h2 class="doc-title">9. 90-Day Implementation Roadmap</h2>
+            <p class="doc-text">
+              A structured 5-sprint pilot plan delivering enterprise value in 90 days:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Sprint Window</th>
+                    <th>Phase</th>
+                    <th>Core Engineering Focus</th>
+                    <th>Phase Exit Criteria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Days 1–15</strong></td>
+                    <td>Phase 0</td>
+                    <td>Scope 1 repo, 1 DB, 1 orchestrator; 50 ground truth links.</td>
+                    <td>Bounded pilot with explicit non-goals.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Days 16–35</strong></td>
+                    <td>Phase 1</td>
+                    <td>Tree-sitter + SQLGlot parsers; table read/write edges.</td>
+                    <td>Trace tables to code reading/writing them.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Days 36–55</strong></td>
+                    <td>Phase 2</td>
+                    <td>Canonical 6-tuple URIs; column AST math; DB connector.</td>
+                    <td>Duplicate names never merge across envs.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Days 56–75</strong></td>
+                    <td>Phase 3 & 4</td>
+                    <td>React Flow UI canvas; impact analysis API; Git diffs.</td>
+                    <td>Complete cross-system traversal across 2+ systems.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Days 76–90</strong></td>
+                    <td>Phase 5</td>
+                    <td>Pilot demo; precision validation; gap reporting.</td>
+                    <td>Pilot team uses platform without manual graph rebuilds.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 10 -->
+          <section id="sec-risks" class="doc-section">
+            <h2 class="doc-title">10. Risk Management Matrix</h2>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Risk</th>
+                    <th>Operational Impact</th>
+                    <th>Mitigation Engineering Strategy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>False-Positive Edges</strong></td>
+                    <td>Users lose trust; blast alerts become noise.</td>
+                    <td>Mandatory inspectable proof; precision target >95%.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Silent Coverage Gaps</strong></td>
+                    <td>Partial graph gives false sense of security.</td>
+                    <td>Coverage Dashboard explicitly surfaces unparsed files & unknown edges.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dynamic SQL</strong></td>
+                    <td>Runtime string queries cannot be parsed statically.</td>
+                    <td>Augment with query history logs; flag unverified queries as Unknown.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Identity Collisions</strong></td>
+                    <td>Dev and Prod tables erroneously merge.</td>
+                    <td>Strict canonical 6-tuple URIs; never fuzzy-merge production assets.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Graph Hairball</strong></td>
+                    <td>10,000+ nodes overwhelm UI.</td>
+                    <td>Progressive disclosure in React Flow: subgraphs collapsed by default.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Section 11 -->
+          <section id="sec-glossary" class="doc-section">
+            <h2 class="doc-title">11. Comprehensive Glossary</h2>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Term</th>
+                    <th>Architectural Definition</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Data Lineage</strong></td>
+                    <td>The recorded lifecycle of data: origin, transformations, and destinations.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Upstream / Downstream</strong></td>
+                    <td>The source side (provenance) vs. consumer side (blast radius) of any selected asset.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Evidence Record</strong></td>
+                    <td>Auditable physical proof backing an edge: file path, line range, commit hash, and query ID.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Control Dependency</strong></td>
+                    <td>Execution ordering (Airflow Task A >> Task B) without physical data movement.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Canonical URI</strong></td>
+                    <td>Global 6-tuple identifier preventing environment collisions.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blast Radius</strong></td>
+                    <td>The full downstream subtree of systems affected when an upstream asset changes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </div>
+      
+    </div>
+
+  </main>
+
+  <footer style="border-top:1px solid #e2e8f0; padding:2rem; text-align:center; color:var(--text-muted); font-size:0.85rem; background:#ffffff;">
+    LineageForge Enterprise Platform • Evidence-Backed Data Lineage & Dependency Resolution • 
+    <a href="https://github.com/TestAccount-04/datalineage.git" style="color:var(--blue-primary); text-decoration:none; font-weight:600;" target="_blank">github.com/TestAccount-04/datalineage</a>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
